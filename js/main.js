@@ -1,0 +1,1 @@
+fetch('https://dapi.kakao.com/v3/search/book?target=title&query=${encodeURIComponent(query)')
