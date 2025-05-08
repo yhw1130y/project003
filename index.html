@@ -1,22 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>영풍문고</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>영풍문고</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header>
-        <section>
-            <div>
-                
+  <header class="site-header">
+    <!-- 상단 유틸바 -->
+    <div class="top-bar">
+      <div class="inner">
+        <ul class="util-left">
+          <li><a href="#">매장안내</a></li>
+          <li><a href="#">혜택안내</a></li>
+          <li><a href="#">나우드림</a></li>
+        </ul>
+        <ul class="util-right">
+          <li><a href="#">로그인</a></li>
+          <li><a href="#">장바구니</a></li>
+          <li><a href="#">주문/배송</a></li>
+          <li><a href="#">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 로고 + 검색 + 키워드 -->
+    <div class="header__center">
+      <div class="inner">
+        <div class="left-wrap">
+          <div class="logo-box">
+            <img src="./img/yp_logo.png" alt="영풍문고 로고" class="logo-img" />
+          </div>
+
+          <div class="search-group">
+            <div class="search-box">
+              <input type="text" placeholder="쇼펜하우어 인생수업, 10만부 판매 기념 리커버!" />
+              <button class="search-btn"></button>
             </div>
-        </section>
-    </header>
 
+            <div class="search-keywords">
+              <a href="#">한강 &lt;빗과 실&gt;</a> |
+              <a href="#">유시민 청춘의 독서</a> |
+              <a href="#">기욤뮈소 평등</a> |
+              <a href="#">김영하 신간</a> |
+              <a href="#">프란치스코 교황</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-
-    <script src="./js/js.html"></script>
+    <!-- 메뉴 -->
+    <nav class="navigation-category">
+      <div class="inner">
+        <ul>
+          <li><a href="#">전체 카테고리</a></li>
+          <li><a href="#">베스트</a></li>
+          <li><a href="#">신상품</a></li>
+          <li><a href="#">추천</a></li>
+          <li><a href="#">기프티콘</a></li>
+          <li><a href="#">컬쳐페이지</a></li>
+          <li><a href="#">혜택</a></li>
+          <li><a href="#">사은품</a></li>
+          <li><a href="#">문학행사</a></li>
+          <li><a href="#">이벤트</a></li>
+          <li><a href="#">출석체크</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 </body>
 </html>
