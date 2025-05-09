@@ -24,7 +24,6 @@ $border-gray: #ddd;
     justify-content: space-between;
   }
 
-  /* 상단 유틸바 */
   .top-bar {
     background: #fff;
     font-size: 12px;
@@ -53,11 +52,10 @@ $border-gray: #ddd;
     }
   }
 
-  /* 헤더 메인 */
   .header__center {
-    width: 100%;             // ✅ 배경 확장
+    width: 100%;
     background: #fff;
-    padding: 50px 0 50px;
+    padding: 40px 0;
 
     .inner {
       display: flex;
@@ -66,14 +64,10 @@ $border-gray: #ddd;
 
     .left-wrap {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 24px;
 
       .logo-box {
-        margin-top: 8px;
-        display: flex;
-        align-items: center;
-        
         .logo-img {
           height: 68px;
         }
@@ -84,15 +78,15 @@ $border-gray: #ddd;
         flex-direction: column;
         gap: 6px;
         width: 581px;
-        margin-top: 35px;
-        margin-left: 20px;
+        margin-top: 50px;
+        margin-left: 30px;
 
         .search-box {
           width: 100%;
           height: 44px;
           display: flex;
           align-items: center;
-          border: 1px solid $gray-text;
+          border: 1px solid $border-gray;
           border-radius: 8px;
           overflow: hidden;
 
@@ -136,37 +130,90 @@ $border-gray: #ddd;
     }
   }
 
-  /* 메뉴 */
   .navigation-category {
-    width: 100%; // ✅ 메뉴도 전체 배경 확장
+    width: 100%;
+    height: 50px;
     background: linear-gradient(to right, $gold-grad-start, $gold-grad-end);
     font-size: 15px;
 
     .inner {
+      max-width: 1060px; // ✅ 고정 유지
+      margin: 0 auto;
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
     }
 
-    ul {
+    .menu-left {
       display: flex;
+      align-items: center;
+      flex-wrap: nowrap;     // ✅ 줄바꿈 방지
       list-style: none;
-      padding: 12px 0;
-      gap: 24px;
+      gap: 16px;
       margin: 0;
+      padding: 0;
+      height: 100%;
 
       li a {
+        display: flex;
+        align-items: center;
+        height: 100%;
         color: #fff;
         text-decoration: none;
-        padding: 6px 8px;
+        padding: 0 8px;
 
         &:hover {
           text-decoration: underline;
         }
-      }
 
-      li:first-child a {
-        font-size: 17px;
-        padding: 10px 8px;
+        &:first-child {
+          font-size: 15px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .menu-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex: none;
+      height: 100%;
+    
+      li {
+        display: flex;
+        align-items: center;
+    
+        a {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          color: #fff;
+          text-decoration: none;
+          font-size: 14px;
+          padding: 0 8px;
+          position: relative;
+    
+          &::before {
+            content: "|";
+            position: absolute;
+            left: -6px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+          }
+    
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+    
+        &:first-child a::before {
+          content: "";
+        }
       }
     }
   }
