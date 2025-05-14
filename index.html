@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>영풍문고</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <header class="site-header">
-    <!-- 상단 유틸바 -->
-    <div class="top-bar">
-      <div class="inner">
-        <ul class="util-left">
+  <div class="wrap">
+
+    <!-- 상단 유틸 메뉴 -->
+    <div class="header_top">
+      <div class="top_util">
+        <ul class="top_util_left">
           <li><a href="#">매장안내</a></li>
           <li><a href="#">혜택안내</a></li>
           <li><a href="#">나우드림</a></li>
         </ul>
-        <ul class="util-right">
+        <ul class="top_util_right">
           <li><a href="#">로그인</a></li>
           <li><a href="#">장바구니</a></li>
           <li><a href="#">주문/배송</a></li>
@@ -25,54 +29,480 @@
       </div>
     </div>
 
-    <!-- 로고 + 검색 + 키워드 -->
-    <div class="header__center">
+    <!-- 로고 + 검색 + 광고 -->
+    <div class="header_middle">
       <div class="inner">
-        <div class="left-wrap">
-          <div class="logo-box">
-            <img src="./img/yp_logo.png" alt="영풍문고 로고" class="logo-img" />
+        <h1 class="logo"><a href="#"><img src="./img/yp_logo.png" alt="영풍문고"></a></h1>
+        <div class="search_wrap">
+          <div class="search_input">
+            <input type="text" placeholder="쇼펜하우어 인생수업, 10만부 판매 기념 리커버!">
+            <button class="btn_search"></button>
           </div>
-
-          <div class="search-group">
-            <div class="search-box">
-              <input type="text" placeholder="쇼펜하우어 인생수업, 10만부 판매 기념 리커버!" />
-              <button class="search-btn"></button>
-            </div>
-
-            <div class="search-keywords">
-              <a href="#">한강 &lt;빗과 실&gt;</a> |
-              <a href="#">유시민 청춘의 독서</a> |
-              <a href="#">기욤뮈소 평등</a> |
-              <a href="#">김영하 신간</a> |
-              <a href="#">프란치스코 교황</a>
-            </div>
+          <div class="search_keywords">
+            <a href="#">한강 &lt;빛과 실&gt;</a>
+            <a href="#">유시민 청춘의 독서</a>
+            <a href="#">기욤뮈소 평등</a>
+            <a href="#">김영하 신간</a>
+            <a href="#">프란치스코 교황</a>
           </div>
+        </div>
+        <div class="ad_banner">
+          <a href="#"><img src="./img/banner_ad.png" alt="더 퀸 테일러 스위프트 광고"></a>
         </div>
       </div>
     </div>
 
-    <!-- 메뉴 -->
-    <nav class="navigation-category">
+    <!-- GNB 메뉴 -->
+    <div class="header_navigation">
       <div class="inner">
-        <ul class="menu-left">
+        <ul class="gnb_left">
           <li><a href="#">전체 카테고리</a></li>
+          <!-- 전체 카테고리 드롭다운 -->
+          <div class="gnb_dropdown">
+            <div class="dropdown_inner">
+              <div class="dropdown_left">
+                <ul>
+                  <li><a href="#">국내도서</a></li>
+                  <li><a href="#">외국도서</a></li>
+                  <li><a href="#">영풍문고 매장</a></li>
+                </ul>
+              </div>
+              <div class="dropdown_right">
+                <ul>
+                  <li><a href="#">소설/에세이</a></li>
+                  <li><a href="#">유아/어린이/초등학습</a></li>
+                  <li><a href="#">인문/역사</a></li>
+                  <li><a href="#">예술</a></li>
+                  <li><a href="#">종교</a></li>
+                  <li><a href="#">경제/경영</a></li>
+                  <li><a href="#">정치/사회</a></li>
+                  <li><a href="#">수험서/자격증</a></li>
+                  <li><a href="#">사전</a></li>
+                  <li><a href="#">자녀교육/건강/여행/요리</a></li>
+                  <li><a href="#">중/고학습</a></li>
+                  <li><a href="#">외국어</a></li>
+                  <li><a href="#">컴퓨터/IT</a></li>
+                  <li><a href="#">기술/공학</a></li>
+                  <li><a href="#">자연/과학</a></li>
+                  <li><a href="#">의학</a></li>
+                  <li><a href="#">잡지</a></li>
+                </ul>
+              </div>
+              <div class="dropdown_banner">
+                <a href="#">
+                  <img src="./img/gnb_banner.jpg" alt="아빠의 이야기">
+                </a>
+              </div>
+            </div>
+          </div>
           <li><a href="#">베스트</a></li>
           <li><a href="#">신상품</a></li>
           <li><a href="#">추천</a></li>
           <li><a href="#">기프티콘</a></li>
           <li><a href="#">컬쳐페이지</a></li>
         </ul>
-
-        <ul class="menu-right">
+        <ul class="gnb_right">
           <li><a href="#">혜택</a></li>
           <li><a href="#">사은품</a></li>
           <li><a href="#">문학행사</a></li>
           <li><a href="#">이벤트</a></li>
           <li><a href="#">출석체크</a></li>
-        </ul>  
-        
+        </ul>
       </div>
-    </nav>
-  </header>
+    </div>
+
+    <!-- 메인 슬라이드 -->
+    <section class="main_slider">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="./img/main s1.png" alt="s1"></div>
+          <div class="swiper-slide"><img src="" alt="s2"></div>
+          <div class="swiper-slide"><img src="" alt="s3"></div>
+          <div class="swiper-slide"><img src="" alt="s4"></div>
+          <div class="swiper-slide"><img src="" alt="s5"></div>
+          <div class="swiper-slide"><img src="" alt="s6"></div>
+          <div class="swiper-slide"><img src="" alt="s7"></div>
+          <div class="swiper-slide"><img src="" alt="s8"></div>
+          <div class="swiper-slide"><img src="" alt="s9"></div>
+          <div class="swiper-slide"><img src="" alt="s10"></div>
+          <div class="swiper-slide"><img src="" alt="s11"></div>
+          <div class="swiper-slide"><img src="" alt="s12"></div>
+          <div class="swiper-slide"><img src="" alt="s13"></div>
+          <div class="swiper-slide"><img src="" alt="s14"></div>
+          <div class="swiper-slide"><img src="" alt="s15"></div>
+          <div class="swiper-slide"><img src="" alt="s16"></div>
+          <div class="swiper-slide"><img src="" alt="s17"></div>
+          <div class="swiper-slide"><img src="" alt="s18"></div>
+          <div class="swiper-slide"><img src="" alt="s19"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </section>
+
+    <!-- 바로가기 메뉴 -->
+    <section class="shortcut_section">
+      <div class="inner">
+        <ul class="shortcut_list">
+          <li><a href="#"><img src="./img/icon01.png" alt="출석체크"><span>출석체크</span></a></li>
+          <li><a href="#"><img src="./img/icon02.png" alt="이달의 행사"><span>이달의 행사</span></a></li>
+          <li><a href="#"><img src="./img/icon03.png" alt="매장안내"><span>매장안내</span></a></li>
+          <li><a href="#"><img src="./img/icon04.png" alt="나우드림"><span>나우드림</span></a></li>
+          <li><a href="#"><img src="./img/icon05.png" alt="이벤트"><span>이벤트</span></a></li>
+          <li><a href="#"><img src="./img/icon06.png" alt="컬쳐페이지"><span>컬쳐페이지</span><em class="badge">NEW</em></a></li>
+          <li><a href="#"><img src="./img/icon01.png" alt="바로가기"><span>바로가기</span></a></li>
+          <li><a href="#"><img src="./img/icon01.png" alt="바로가기"><span>바로가기</span></a></li>
+          <li><a href="#"><img src="./img/icon01.png" alt="바로가기"><span>바로가기</span></a></li>
+          <li><a href="#"><img src="./img/icon01.png" alt="바로가기"><span>바로가기</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 오늘의 책이에요 -->
+    <section class="todays_book">
+      <div class="inner">
+        <h2 class="section_title">오늘의☀️책이에요</h2>
+        <ul class="book_list">
+          <li>
+            <a href="#">
+              <img src="./img/book1.jpg" alt="책표지1">
+              <div class="book_info">
+                <strong class="book_title">책 제목 1</strong>
+                <span class="book_author">저자 1</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/book2.jpg" alt="책표지2">
+              <div class="book_info">
+                <strong class="book_title">책 제목 2</strong>
+                <span class="book_author">저자 2</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/book1.jpg" alt="책표지1">
+              <div class="book_info">
+                <strong class="book_title">책 제목 1</strong>
+                <span class="book_author">저자 1</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/book1.jpg" alt="책표지1">
+              <div class="book_info">
+                <strong class="book_title">책 제목 1</strong>
+                <span class="book_author">저자 1</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/book1.jpg" alt="책표지1">
+              <div class="book_info">
+                <strong class="book_title">책 제목 1</strong>
+                <span class="book_author">저자 1</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 주간 베스트셀러 섹션 -->
+    <section class="weekly_best">
+      <div class="inner">
+        <div class="section_header">
+          <h2 class="section_title">주간 베스트🌟셀러예요</h2>
+          <span class="date_range">2025.05.05 ~ 2025.05.11</span>
+        </div>
+
+        <ul class="category_tab">
+          <li class="active"><a href="#">종합</a></li>
+          <li><a href="#">국내소설</a></li>
+          <li><a href="#">외국소설</a></li>
+          <li><a href="#">비소설</a></li>
+          <li><a href="#">경제경영</a></li>
+          <li><a href="#">인문과학</a></li>
+          <li><a href="#">어린이</a></li>
+          <li><a href="#">외국어</a></li>
+          <li><a href="#">자기계발</a></li>
+          <li><a href="#">유아</a></li>
+          <li><a href="#">가정/생활/요리</a></li>
+          <li><a href="#">청소년</a></li>
+          <li><a href="#">만화</a></li>
+        </ul>
+
+        <div class="best_slide_wrap">
+          <div class="best_main">
+            <img src="./img/best_main.jpg" alt="베스트 메인 도서">
+            <div class="book_info">
+              <span class="rank">04</span>
+              <strong class="book_title">급류(오늘의 젊은 작가40)</strong>
+              <span class="book_author">정대건</span>
+              <div class="tags">
+                <span>#젊은작가</span>
+                <span>#한국소설</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="best_list">
+            <button class="btn-prev">&lt;</button>
+            <ul>
+              <li>
+                <div class="book">
+                  <img src="./img/book4.jpg" alt="책4">
+                  <span class="rank">4</span>
+                </div>
+              </li>
+              <li>
+                <div class="book">
+                  <img src="./img/book5.jpg" alt="책5">
+                  <span class="rank">5</span>
+                </div>
+              </li>
+              <li>
+                <div class="book">
+                  <img src="./img/book6.jpg" alt="책6">
+                  <span class="rank">6</span>
+                </div>
+              </li>
+              <li>
+                <div class="book">
+                  <img src="./img/book7.jpg" alt="책7">
+                  <span class="rank">7</span>
+                </div>
+              </li>
+              <li>
+                <div class="book">
+                  <img src="./img/book8.jpg" alt="책8">
+                  <span class="rank">8</span>
+                </div>
+              </li>
+            </ul>
+            <button class="btn-next">&gt;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MD 추천 도서예요 -->
+    <section class="md_recommend">
+      <div class="inner">
+        <h2 class="section_title">MD 추천 도서예요</h2>
+        <ul class="book_list">
+          <li>
+            <a href="#">
+              <img src="./img/md1.jpg" alt="추천책1">
+              <div class="book_info">
+                <strong class="book_title">추천 도서 1</strong>
+                <span class="book_author">MD 선택</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/md2.jpg" alt="추천책2">
+              <div class="book_info">
+                <strong class="book_title">추천 도서 2</strong>
+                <span class="book_author">MD 선택</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/md2.jpg" alt="추천책2">
+              <div class="book_info">
+                <strong class="book_title">추천 도서 2</strong>
+                <span class="book_author">MD 선택</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/md2.jpg" alt="추천책2">
+              <div class="book_info">
+                <strong class="book_title">추천 도서 2</strong>
+                <span class="book_author">MD 선택</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/md2.jpg" alt="추천책2">
+              <div class="book_info">
+                <strong class="book_title">추천 도서 2</strong>
+                <span class="book_author">MD 선택</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 급상승 검색어 도서 -->
+    <section class="rising_books">
+      <div class="inner">
+        <h2 class="section_title">지금 급상승 중이에요</h2>
+        <div class="rising_content">
+          <div class="book_img">
+            <a href="#"><img src="./img/rising_main.jpg" alt="급상승 대표책"></a>
+          </div>
+          <div class="ranking_list">
+            <ol>
+              <li><a href="#"><em>1</em> 트렌드 코리아 2025</a></li>
+              <li><a href="#"><em>2</em> 세이노의 가르침</a></li>
+              <li><a href="#"><em>3</em> 불편한 편의점 3</a></li>
+              <li><a href="#"><em>4</em> 문과남자의 과학공부</a></li>
+              <li><a href="#"><em>5</em> 설자은의 소설</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOT BOOK이에요 -->
+    <section class="hot_books">
+      <div class="inner">
+        <h2 class="section_title">🔥 HOT BOOK이에요</h2>
+        <div class="swiper hotbook-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#"><img src="./img/hot1.jpg" alt="HOT1"></a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#"><img src="./img/hot2.jpg" alt="HOT2"></a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#"><img src="./img/hot3.jpg" alt="HOT3"></a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#"><img src="./img/hot1.jpg" alt="HOT1"></a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#"><img src="./img/hot1.jpg" alt="HOT1"></a>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 이런 책은 어떠세요 -->
+    <section class="recommend_cards">
+      <div class="inner">
+        <h2 class="section_title">이런 책은🤔 어떠세요?</h2>
+        <div class="card_list_wrap">
+          <button class="card-prev">&lt;</button>
+          <ul class="card_list">
+            <li>
+              <a href="#">
+                <img src="./img/card1.jpg" alt="추천카드1">
+                <div class="book_info">
+                  <strong class="book_title">추천 카드 도서 1</strong>
+                  <span class="book_author">저자 A</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./img/card2.jpg" alt="추천카드2">
+                <div class="book_info">
+                  <strong class="book_title">추천 카드 도서 2</strong>
+                  <span class="book_author">저자 B</span>
+                </div>
+              </a>
+            </li>
+
+            
+          </ul>
+          <button class="card-next">&gt;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 좋은 평가를 받고 있어요 -->
+    <section class="good_reviews">
+      <div class="inner">
+        <h2 class="section_title">좋은 평가를⭐받고 있어요</h2>
+        <ul class="review_book_list">
+          <li>
+            <a href="#">
+              <img src="./img/review1.jpg" alt="리뷰도서1">
+              <div class="book_info">
+                <strong class="book_title">리뷰 도서 1</strong>
+                <span class="book_author">저자 C</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/review2.jpg" alt="리뷰도서2">
+              <div class="book_info">
+                <strong class="book_title">리뷰 도서 2</strong>
+                <span class="book_author">저자 D</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/review2.jpg" alt="리뷰도서2">
+              <div class="book_info">
+                <strong class="book_title">리뷰 도서 2</strong>
+                <span class="book_author">저자 D</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 공지사항 -->
+    <section class="notice_area">
+      <div class="inner">
+        <h2 class="section_title">공지사항</h2>
+        <ul class="notice_list">
+          <li><a href="#">[공지] 개인정보 처리방침 개정 안내 (2024.06.01)</a></li>
+          <li><a href="#">[이벤트] 2024 상반기 사은품 지급 기준 변경</a></li>
+          <li><a href="#">[안내] 모바일 앱 업데이트 안내</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="site_footer">
+      <div class="inner">
+        <div class="footer_top">
+          <ul class="footer_menu">
+            <li><a href="#">회사소개</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">청소년보호정책</a></li>
+            <li><a href="#">고객센터</a></li>
+          </ul>
+        </div>
+
+        <div class="footer_info">
+          <p>
+            (주)영풍문고 | 대표이사 : 유ㅇㅇ | 사업자등록번호 : 101-81-XXXX | 통신판매업신고 : 2022-서울종로-00000<br>
+            주소 : 서울시 종로구 청계천로 41 (우: 03188) | 대표전화 : 1544-9020 | 이메일 : help@ypbooks.co.kr
+          </p>
+          <p class="copyright">Copyright © YPBOOKS All Rights Reserved.</p>
+        </div>
+
+        <div class="footer_logo">
+          <img src="./img/logo_footer.png" alt="영풍문고 로고">
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
+
 </html>
