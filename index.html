@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>영풍문고</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 
@@ -52,64 +52,67 @@
       </div>
     </div>
 
-    <!-- GNB 메뉴 -->
-    <div class="header_navigation">
-      <div class="inner">
-        <ul class="gnb_left">
-          <li><a href="#">전체 카테고리</a></li>
-          <!-- 전체 카테고리 드롭다운 -->
-          <div class="gnb_dropdown">
-            <div class="dropdown_inner">
-              <div class="dropdown_left">
-                <ul>
-                  <li><a href="#">국내도서</a></li>
-                  <li><a href="#">외국도서</a></li>
-                  <li><a href="#">영풍문고 매장</a></li>
-                </ul>
-              </div>
-              <div class="dropdown_right">
-                <ul>
-                  <li><a href="#">소설/에세이</a></li>
-                  <li><a href="#">유아/어린이/초등학습</a></li>
-                  <li><a href="#">인문/역사</a></li>
-                  <li><a href="#">예술</a></li>
-                  <li><a href="#">종교</a></li>
-                  <li><a href="#">경제/경영</a></li>
-                  <li><a href="#">정치/사회</a></li>
-                  <li><a href="#">수험서/자격증</a></li>
-                  <li><a href="#">사전</a></li>
-                  <li><a href="#">자녀교육/건강/여행/요리</a></li>
-                  <li><a href="#">중/고학습</a></li>
-                  <li><a href="#">외국어</a></li>
-                  <li><a href="#">컴퓨터/IT</a></li>
-                  <li><a href="#">기술/공학</a></li>
-                  <li><a href="#">자연/과학</a></li>
-                  <li><a href="#">의학</a></li>
-                  <li><a href="#">잡지</a></li>
-                </ul>
-              </div>
-              <div class="dropdown_banner">
-                <a href="#">
-                  <img src="./img/gnb_banner.jpg" alt="아빠의 이야기">
-                </a>
-              </div>
-            </div>
-          </div>
-          <li><a href="#">베스트</a></li>
-          <li><a href="#">신상품</a></li>
-          <li><a href="#">추천</a></li>
-          <li><a href="#">기프티콘</a></li>
-          <li><a href="#">컬쳐페이지</a></li>
-        </ul>
-        <ul class="gnb_right">
-          <li><a href="#">혜택</a></li>
-          <li><a href="#">사은품</a></li>
-          <li><a href="#">문학행사</a></li>
-          <li><a href="#">이벤트</a></li>
-          <li><a href="#">출석체크</a></li>
-        </ul>
-      </div>
+<!-- GNB 메뉴 -->
+<div class="header_navigation">
+  <div class="inner">
+    <ul class="gnb_left">
+      <li class="has-dropdown">
+        <a href="#">전체 카테고리</a>
+      </li>
+      <li><a href="#">베스트</a></li>
+      <li><a href="#">신상품</a></li>
+      <li><a href="#">추천</a></li>
+      <li><a href="#">기프티콘</a></li>
+      <li><a href="#">컬쳐페이지</a></li>
+    </ul>
+
+    <ul class="gnb_right">
+      <li><a href="#">혜택</a></li>
+      <li><a href="#">사은품</a></li>
+      <li><a href="#">문학행사</a></li>
+      <li><a href="#">이벤트</a></li>
+      <li><a href="#">출석체크</a></li>
+    </ul>
+  </div>
+
+
+<!-- 드롭다운 메뉴 -->
+<div class="gnb_dropdown">
+  <div class="dropdown_inner">
+    <div class="dropdown_left">
+      <ul>
+        <li><a href="#">국내도서</a></li>
+        <li><a href="#">외국도서</a></li>
+        <li><a href="#">영풍문고 매장</a></li>
+      </ul>
     </div>
+    <div class="dropdown_right">
+      <ul>
+        <li><a href="#">소설/에세이</a></li>
+        <li><a href="#">유아/어린이/초등학습</a></li>
+        <li><a href="#">인문/역사</a></li>
+        <li><a href="#">예술</a></li>
+        <li><a href="#">종교</a></li>
+        <li><a href="#">경제/경영</a></li>
+        <li><a href="#">정치/사회</a></li>
+        <li><a href="#">수험서/자격증</a></li>
+        <li><a href="#">사전</a></li>
+        <li><a href="#">자녀교육/건강/여행/요리</a></li>
+        <li><a href="#">중/고학습</a></li>
+        <li><a href="#">외국어</a></li>
+        <li><a href="#">컴퓨터/IT</a></li>
+        <li><a href="#">기술/공학</a></li>
+        <li><a href="#">자연/과학</a></li>
+        <li><a href="#">의학</a></li>
+        <li><a href="#">잡지</a></li>
+      </ul>
+    </div>
+    <div class="dropdown_banner">
+      <a href="#"><img src="./img/gnb_banner.jpg" alt="배너"></a>
+    </div>
+  </div>
+</div>
+</div>
 
     <!-- 메인 슬라이드 -->
     <section class="main_slider">
@@ -421,7 +424,7 @@
               </a>
             </li>
 
-            
+
           </ul>
           <button class="card-next">&gt;</button>
         </div>
@@ -503,6 +506,7 @@
       </div>
     </footer>
   </div>
-</body>
 
+  <script src="./js/main.js"></script>
+</body>
 </html>
