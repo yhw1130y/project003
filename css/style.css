@@ -256,6 +256,7 @@ button {
   bottom: 10px;
 }
 
+/*아이콘*/
 .shortcut_section {
   padding: 40px 0;
   background-color: #ffffff;
@@ -299,40 +300,53 @@ button {
 /*오늘의 북*/
 .todays_book {
   padding: 60px 0;
-  background-color: #fafafa;
+  background-color: #fff;
 }
 .todays_book .section_title {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 .todays_book .book_list {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .todays_book .book_list li {
-  width: 160px;
+  flex: 1 1 calc(20% - 16px);
+  max-width: 200px;
 }
 .todays_book .book_list li a {
   display: block;
+  text-align: center;
 }
 .todays_book .book_list li a img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 3/4;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 2px 1px 14px 0px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+.todays_book .book_list li a:hover img {
+  transform: translateY(-6px);
 }
 .todays_book .book_list li a .book_info {
   margin-top: 10px;
 }
 .todays_book .book_list li a .book_info .book_title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1e1e1e;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
   display: block;
+  line-height: 1.4;
   margin-bottom: 4px;
 }
 .todays_book .book_list li a .book_info .book_author {
-  font-size: 12px;
-  color: #666666;
+  font-size: 13px;
+  color: #888;
 }
 
 /*주간 베스트*/

@@ -313,7 +313,7 @@ button {
     }
   }
 }
-
+/*아이콘*/
 .shortcut_section {
   padding: 40px 0;
   background-color: $color-white;
@@ -363,43 +363,56 @@ button {
 /*오늘의 북*/
 .todays_book {
   padding: 60px 0;
-  background-color: $color-gray-light;
+  background-color: #fff;
 
   .section_title {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 600;
     margin-bottom: 20px;
   }
 
   .book_list {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
     li {
-      width: 160px;
+      flex: 1 1 calc(20% - 16px);
+      max-width: 200px;
 
       a {
         display: block;
+        text-align: center;
 
         img {
           width: 100%;
-          height: auto;
+          aspect-ratio: 3 / 4;
+          object-fit: cover;
+          border-radius: 10px;
+          box-shadow: 2px 1px 14px 0px rgba(0, 0, 0, 0.08);
+          transition: transform 0.2s;
+        }
+
+        &:hover img {
+          transform: translateY(-6px);
         }
 
         .book_info {
           margin-top: 10px;
 
           .book_title {
-            font-size: 14px;
-            font-weight: 600;
-            color: $color-main;
+            font-size: 15px;
+            font-weight: 500;
+            color: #222;
             display: block;
+            line-height: 1.4;
             margin-bottom: 4px;
           }
 
           .book_author {
-            font-size: 12px;
-            color: $color-sub;
+            font-size: 13px;
+            color: #888;
           }
         }
       }
