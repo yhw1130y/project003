@@ -39,7 +39,7 @@ todaysTitles.forEach(title => {
 });
 
 function renderMdBook(book) {
-  const container = document.querySelector('.md_books .md_list');
+  const container = document.querySelector('.md_recommend .book_list');
   const item = document.createElement('li');
   item.innerHTML = `
     <a href="${book.url}" target="_blank">
@@ -53,7 +53,6 @@ function renderMdBook(book) {
   container.appendChild(item);
 }
 
-// 📘 MD 추천 도서 목록
 const mdRecommendTitles = [
   "내 꿈에 가끔만 놀러와",
   "김켈리의 신비마트3",
@@ -62,7 +61,6 @@ const mdRecommendTitles = [
   "모든 것이 양자 이론 - 세상을 이루는 17가지 기본 입자 이야기"
 ];
 
-// 📘 MD 도서 API로 불러와 렌더링
 mdRecommendTitles.forEach(title => {
   fetchBookByTitle(title).then(book => {
     if (book) renderMdBook(book);

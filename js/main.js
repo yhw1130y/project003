@@ -7,12 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // 드롭다운 열기
   dropdownTrigger.addEventListener('mouseenter', () => {
     dropdownMenu.style.display = 'block';
   });
 
-  // 드롭다운 닫기 (트리거에서 벗어날 때)
   dropdownTrigger.addEventListener('mouseleave', () => {
     setTimeout(() => {
       if (!dropdownMenu.matches(':hover')) {
@@ -21,14 +19,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   });
 
-  // 드롭다운에 마우스 올렸을 때 유지
   dropdownMenu.addEventListener('mouseenter', () => {
     dropdownMenu.style.display = 'block';
   });
 
-  // 드롭다운에서 마우스 벗어났을 때 닫힘
   dropdownMenu.addEventListener('mouseleave', () => {
     dropdownMenu.style.display = 'none';
   });
 });
+
+
+// 슬라이드
+ const swiperEl = document.querySelector('swiper-container');
+    const swiper = swiperEl.swiper;
+
+    var appendNumber = 4;
+    var prependNumber = 1;
+    document
+      .querySelector(".prepend-2-slides")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        swiper.prependSlide([
+          '<swiper-slide>Slide ' + --prependNumber + "</swiper-slide>",
+          '<swiper-slide>Slide ' + --prependNumber + "</swiper-slide>",
+        ]);
+      });
+    document
+      .querySelector(".prepend-slide")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        swiper.prependSlide(
+          '<swiper-slide>Slide ' + --prependNumber + "</swiper-slide>"
+        );
+      });
+    document
+      .querySelector(".append-slide")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        swiper.appendSlide(
+          '<swiper-slide>Slide ' + ++appendNumber + "</swiper-slide>"
+        );
+      });
+    document
+      .querySelector(".append-2-slides")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        swiper.appendSlide([
+          '<swiper-slide>Slide ' + ++appendNumber + "</swiper-slide>",
+          '<swiper-slide>Slide ' + ++appendNumber + "</swiper-slide>",
+        ]);
+      });
+      const progressCircle = document.querySelector(".autoplay-progress svg");
+    const progressContent = document.querySelector(".autoplay-progress span");
+
+    swiperEl.addEventListener("autoplaytimeleft", (e) => {
+      const [swiper, time, progress] = e.detail;
+      progressCircle.style.setProperty("--progress", 1 - progress);
+      progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+    });
 

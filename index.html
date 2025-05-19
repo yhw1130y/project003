@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@1.4.1/src/css/ph.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -53,97 +54,99 @@
       </div>
     </div>
 
-<!-- GNB 메뉴 -->
-<div class="header_navigation">
-  <div class="inner">
-    <ul class="gnb_left">
-      <li class="has-dropdown">
-        <a href="#">전체 카테고리</a>
-      </li>
-      <li><a href="#">베스트</a></li>
-      <li><a href="#">신상품</a></li>
-      <li><a href="#">추천</a></li>
-      <li><a href="#">기프티콘</a></li>
-      <li><a href="#">컬쳐페이지</a></li>
-    </ul>
+    <!-- GNB 메뉴 -->
+    <div class="header_navigation">
+      <div class="inner">
+        <ul class="gnb_left">
+          <li class="has-dropdown">
+            <a href="#">전체 카테고리</a>
+          </li>
+          <li><a href="#">베스트</a></li>
+          <li><a href="#">신상품</a></li>
+          <li><a href="#">추천</a></li>
+          <li><a href="#">기프티콘</a></li>
+          <li><a href="#">컬쳐페이지</a></li>
+        </ul>
 
-    <ul class="gnb_right">
-      <li><a href="#">혜택</a></li>
-      <li><a href="#">사은품</a></li>
-      <li><a href="#">문학행사</a></li>
-      <li><a href="#">이벤트</a></li>
-      <li><a href="#">출석체크</a></li>
-    </ul>
-  </div>
-
-
-<!-- 드롭다운 메뉴 -->
-<div class="gnb_dropdown">
-  <div class="dropdown_inner">
-    <div class="dropdown_left">
-      <ul>
-        <li><a href="#">국내도서</a></li>
-        <li><a href="#">외국도서</a></li>
-        <li><a href="#">영풍문고 매장</a></li>
-      </ul>
-    </div>
-    <div class="dropdown_right">
-      <ul>
-        <li><a href="#">소설/에세이</a></li>
-        <li><a href="#">유아/어린이/초등학습</a></li>
-        <li><a href="#">인문/역사</a></li>
-        <li><a href="#">예술</a></li>
-        <li><a href="#">종교</a></li>
-        <li><a href="#">경제/경영</a></li>
-        <li><a href="#">정치/사회</a></li>
-        <li><a href="#">수험서/자격증</a></li>
-        <li><a href="#">사전</a></li>
-        <li><a href="#">자녀교육/건강/여행/요리</a></li>
-        <li><a href="#">중/고학습</a></li>
-        <li><a href="#">외국어</a></li>
-        <li><a href="#">컴퓨터/IT</a></li>
-        <li><a href="#">기술/공학</a></li>
-        <li><a href="#">자연/과학</a></li>
-        <li><a href="#">의학</a></li>
-        <li><a href="#">잡지</a></li>
-      </ul>
-    </div>
-    <div class="dropdown_banner">
-      <a href="#"><img src="./img/gnb_banner.jpg" alt="배너"></a>
-    </div>
-  </div>
-</div>
-</div>
-
-    <!-- 메인 슬라이드 -->
-    <section class="main_slider">
-      <div class="swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="./img/main s1.png" alt="s1"></div>
-          <div class="swiper-slide"><img src="" alt="s2"></div>
-          <div class="swiper-slide"><img src="" alt="s3"></div>
-          <div class="swiper-slide"><img src="" alt="s4"></div>
-          <div class="swiper-slide"><img src="" alt="s5"></div>
-          <div class="swiper-slide"><img src="" alt="s6"></div>
-          <div class="swiper-slide"><img src="" alt="s7"></div>
-          <div class="swiper-slide"><img src="" alt="s8"></div>
-          <div class="swiper-slide"><img src="" alt="s9"></div>
-          <div class="swiper-slide"><img src="" alt="s10"></div>
-          <div class="swiper-slide"><img src="" alt="s11"></div>
-          <div class="swiper-slide"><img src="" alt="s12"></div>
-          <div class="swiper-slide"><img src="" alt="s13"></div>
-          <div class="swiper-slide"><img src="" alt="s14"></div>
-          <div class="swiper-slide"><img src="" alt="s15"></div>
-          <div class="swiper-slide"><img src="" alt="s16"></div>
-          <div class="swiper-slide"><img src="" alt="s17"></div>
-          <div class="swiper-slide"><img src="" alt="s18"></div>
-          <div class="swiper-slide"><img src="" alt="s19"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <ul class="gnb_right">
+          <li><a href="#">혜택</a></li>
+          <li><a href="#">사은품</a></li>
+          <li><a href="#">문학행사</a></li>
+          <li><a href="#">이벤트</a></li>
+          <li><a href="#">출석체크</a></li>
+        </ul>
       </div>
-    </section>
+
+
+      <!-- 드롭다운 메뉴 -->
+      <div class="gnb_dropdown">
+        <div class="dropdown_inner">
+          <div class="dropdown_left">
+            <ul>
+              <li><a href="#">국내도서</a></li>
+              <li><a href="#">외국도서</a></li>
+              <li><a href="#">영풍문고 매장</a></li>
+            </ul>
+          </div>
+          <div class="dropdown_right">
+            <ul>
+              <li><a href="#">소설/에세이</a></li>
+              <li><a href="#">유아/어린이/초등학습</a></li>
+              <li><a href="#">인문/역사</a></li>
+              <li><a href="#">예술</a></li>
+              <li><a href="#">종교</a></li>
+              <li><a href="#">경제/경영</a></li>
+              <li><a href="#">정치/사회</a></li>
+              <li><a href="#">수험서/자격증</a></li>
+              <li><a href="#">사전</a></li>
+              <li><a href="#">자녀교육/건강/여행/요리</a></li>
+              <li><a href="#">중/고학습</a></li>
+              <li><a href="#">외국어</a></li>
+              <li><a href="#">컴퓨터/IT</a></li>
+              <li><a href="#">기술/공학</a></li>
+              <li><a href="#">자연/과학</a></li>
+              <li><a href="#">의학</a></li>
+              <li><a href="#">잡지</a></li>
+            </ul>
+          </div>
+          <div class="dropdown_banner">
+            <a href="#"><img src="./img/gnb_banner.jpg" alt="배너"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <section class="main_slider">
+    <swiper-container class="mySwiper" pagination="true"pagination-clickable="true"centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false" slides-per-view="4" centered-slides="true" space-between="30"   pagination="true"    
+      pagination-type="fraction" navigation="true">
+      <swiper-slide><img src="./img/main s1.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s2.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s3.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s4.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s5.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s6.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s7.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s8.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s9.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s10.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s11.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s12.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s13.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s14.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s15.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s16.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s17.png" alt=""></swiper-slide>
+      <swiper-slide><img src="./img/main s18.png" alt=""></swiper-slide>
+
+      <div class="autoplay-progress" slot="container-end">
+      <svg viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="20"></circle>
+      </svg>
+      <span></span>
+    </div>
+    </swiper-container>
+    
+
 
     <!-- 바로가기 메뉴 -->
     <section class="shortcut_section">
@@ -154,7 +157,8 @@
           <li><a href="#"><img src="./img/storeinfo.png" alt="storeinfo"><span>매장안내</span></a></li>
           <li><a href="#"><img src="./img/nowdream.png" alt="nowdream"><span>나우드림</span></a></li>
           <li><a href="#"><img src="./img/event.png" alt="event"><span>이벤트</span></a></li>
-          <li><a href="#"><img src="./img/culpage.png" alt="culpage"><span>컬쳐페이지</span><em class="badge">NEW</em></a></li>
+          <li><a href="#"><img src="./img/culpage.png" alt="culpage"><span>컬쳐페이지</span><em class="badge">NEW</em></a>
+          </li>
           <li><a href="#"><img src="./img/go.png" alt="go"><span>바로가기</span></a></li>
           <li><a href="#"><img src="./img/go.png" alt="go"><span>바로가기</span></a></li>
           <li><a href="#"><img src="./img/go.png" alt="go"><span>바로가기</span></a></li>
@@ -255,51 +259,6 @@
       <div class="inner">
         <h2 class="section_title">MD 추천 도서예요</h2>
         <ul class="book_list">
-          <li>
-            <a href="#">
-              <img src="./img/md1.jpg" alt="추천책1">
-              <div class="book_info">
-                <strong class="book_title">추천 도서 1</strong>
-                <span class="book_author">MD 선택</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="./img/md2.jpg" alt="추천책2">
-              <div class="book_info">
-                <strong class="book_title">추천 도서 2</strong>
-                <span class="book_author">MD 선택</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="./img/md2.jpg" alt="추천책2">
-              <div class="book_info">
-                <strong class="book_title">추천 도서 2</strong>
-                <span class="book_author">MD 선택</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="./img/md2.jpg" alt="추천책2">
-              <div class="book_info">
-                <strong class="book_title">추천 도서 2</strong>
-                <span class="book_author">MD 선택</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="./img/md2.jpg" alt="추천책2">
-              <div class="book_info">
-                <strong class="book_title">추천 도서 2</strong>
-                <span class="book_author">MD 선택</span>
-              </div>
-            </a>
-          </li>
         </ul>
       </div>
     </section>
@@ -463,7 +422,9 @@
     </footer>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/api.js"></script>
 </body>
+
 </html>

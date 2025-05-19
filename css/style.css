@@ -233,27 +233,74 @@ button {
 }
 
 /*슬라이드*/
-.main_slider {
-  position: relative;
-  width: 100%;
+.mySwiper {
+  width: 1060px;
+  height: 400px;
+  margin: 0 auto;
+  border-radius: 16px;
   overflow: hidden;
+  position: relative;
 }
-.main_slider .swiper {
-  width: 100%;
-  height: 360px;
+.mySwiper swiper-slide {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
-.main_slider .swiper .swiper-slide img {
+.mySwiper swiper-slide img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  display: block;
 }
-.main_slider .swiper .swiper-button-prev,
-.main_slider .swiper .swiper-button-next {
-  color: #333;
+.mySwiper .swiper-button-prev,
+.mySwiper .swiper-button-next {
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
 }
-.main_slider .swiper .swiper-pagination {
-  bottom: 10px;
+.mySwiper .swiper-pagination {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  z-index: 10;
+}
+.mySwiper .autoplay-progress {
+  position: absolute;
+  right: 72px;
+  bottom: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+}
+.mySwiper .autoplay-progress svg {
+  --progress: 1;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  stroke: white;
+  stroke-width: 4;
+  fill: none;
+  stroke-dasharray: 126;
+  stroke-dashoffset: calc(126 * var(--progress));
+  transition: stroke-dashoffset 0.25s linear;
+}
+.mySwiper .autoplay-progress span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 /*아이콘*/
@@ -481,40 +528,54 @@ button {
 /*md 추천*/
 .md_recommend {
   padding: 60px 0;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 .md_recommend .section_title {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 .md_recommend .book_list {
   display: flex;
+  justify-content: space-between;
   gap: 20px;
+  flex-wrap: wrap;
 }
 .md_recommend .book_list li {
-  width: 160px;
+  flex: 1 1 calc(20% - 16px);
+  max-width: 200px;
 }
 .md_recommend .book_list li a {
   display: block;
+  text-align: center;
 }
 .md_recommend .book_list li a img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 3/4;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+.md_recommend .book_list li a:hover img {
+  transform: translateY(-6px);
 }
 .md_recommend .book_list li a .book_info {
   margin-top: 10px;
+  text-align: center;
 }
 .md_recommend .book_list li a .book_info .book_title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1e1e1e;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
   display: block;
+  line-height: 1.4;
   margin-bottom: 4px;
 }
 .md_recommend .book_list li a .book_info .book_author {
-  font-size: 12px;
-  color: #666666;
+  font-size: 13px;
+  color: #888;
 }
 
 /*급상승 도서*/
