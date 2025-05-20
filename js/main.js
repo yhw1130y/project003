@@ -30,51 +30,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // 슬라이드
- const swiperEl = document.querySelector('swiper-container');
-    const swiper = swiperEl.swiper;
+const swiperEl = document.querySelector('swiper-container');
+const swiper = swiperEl.swiper;
+const progressCircle = document.querySelector(".autoplay-progress svg");
+const progressContent = document.querySelector(".autoplay-progress span");
 
-    var appendNumber = 4;
-    var prependNumber = 1;
-    document
-      .querySelector(".prepend-2-slides")
-      .addEventListener("click", function (e) {
-        e.preventDefault();
-        swiper.prependSlide([
-          '<swiper-slide>Slide ' + --prependNumber + "</swiper-slide>",
-          '<swiper-slide>Slide ' + --prependNumber + "</swiper-slide>",
-        ]);
-      });
-    document
-      .querySelector(".prepend-slide")
-      .addEventListener("click", function (e) {
-        e.preventDefault();
-        swiper.prependSlide(
-          '<swiper-slide>Slide ' + --prependNumber + "</swiper-slide>"
-        );
-      });
-    document
-      .querySelector(".append-slide")
-      .addEventListener("click", function (e) {
-        e.preventDefault();
-        swiper.appendSlide(
-          '<swiper-slide>Slide ' + ++appendNumber + "</swiper-slide>"
-        );
-      });
-    document
-      .querySelector(".append-2-slides")
-      .addEventListener("click", function (e) {
-        e.preventDefault();
-        swiper.appendSlide([
-          '<swiper-slide>Slide ' + ++appendNumber + "</swiper-slide>",
-          '<swiper-slide>Slide ' + ++appendNumber + "</swiper-slide>",
-        ]);
-      });
-      const progressCircle = document.querySelector(".autoplay-progress svg");
-    const progressContent = document.querySelector(".autoplay-progress span");
+swiperEl.addEventListener("autoplaytimeleft", (e) => {
+  const [swiper, time, progress] = e.detail;
+  progressCircle.style.setProperty("--progress", 1 - progress);
+  progressContent.textContent = `${Math.ceil(time / 1000)}s`;
 
-    swiperEl.addEventListener("autoplaytimeleft", (e) => {
-      const [swiper, time, progress] = e.detail;
-      progressCircle.style.setProperty("--progress", 1 - progress);
-      progressContent.textContent = `${Math.ceil(time / 1000)}s`;
-    });
+  Object.assign(swiperEl, {
+  navigation: {
+    nextEl: '.custom-button-next',
+    prevEl: '.custom-button-prev'
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'fraction'
+  },
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false
+  },
+  loop: true
+});
 
+swiperEl.initialize();
+
+});

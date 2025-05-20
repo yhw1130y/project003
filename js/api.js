@@ -8,6 +8,7 @@ async function fetchBookByTitle(title) {
   return data.documents[0]; 
 }
 
+// 오늘의 책
 function renderTodaysBook(book) {
   const container = document.querySelector('.todays_book .book_list');
   const item = document.createElement('li');
@@ -38,8 +39,40 @@ todaysTitles.forEach(title => {
   });
 });
 
+
+// md 도서
 function renderMdBook(book) {
   const container = document.querySelector('.md_recommend .book_list');
+  const item = document.createElement('li');
+  item.innerHTML = `
+    <a href="${book.url}" target="_blank">
+      <img src="${book.thumbnail}" alt="${book.title}">
+      <div class="book_info">
+        <strong class="book_title">${book.title}</strong>
+        <span class="book_author">${book.authors.join(', ')}</span>
+      </div>
+    </a>
+  `;
+  container.appendChild(item);
+}
+
+const mdRecommendTitles = [
+  "내 꿈에 가끔만 놀러와",
+  "김켈리의 신비마트3",
+  "호수와 암실",
+  "고음질 명반 가이드북 3 - 음악이 없다면 오디오파일은 없다",
+  "모든 것이 양자 이론 - 세상을 이루는 17가지 기본 입자 이야기"
+];
+
+mdRecommendTitles.forEach(title => {
+  fetchBookByTitle(title).then(book => {
+    if (book) renderMdBook(book);
+    else console.warn(`❌ [검색 실패] "${title}"`);
+  });
+});
+// 핫북
+function renderHotBook(book) {
+  const container = document.querySelector('.hot_books .swiper-slide');
   const item = document.createElement('li');
   item.innerHTML = `
     <a href="${book.url}" target="_blank">
