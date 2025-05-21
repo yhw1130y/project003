@@ -380,8 +380,8 @@ button {
 
 /*주간 베스트*/
 .weekly_best {
+  height: 600px;
   padding: 60px 0;
-  background-color: #fafafa;
 }
 .weekly_best .section_header {
   display: flex;
@@ -422,89 +422,66 @@ button {
   border-color: #1dcd9f;
 }
 .weekly_best .best_slide_wrap {
+  background-color: ivory;
+  width: 1060px;
+  height: 250px;
   display: flex;
-  gap: 30px;
+  align-items: flex-start;
+  gap: 40px;
+  margin: 0 auto;
 }
-.weekly_best .best_main {
-  width: 40%;
+.weekly_best .best_slide_wrap .best_main {
+  width: 200px;
+  flex-shrink: 0;
 }
-.weekly_best .best_main img {
+.weekly_best .best_slide_wrap .best_main img {
+  width: 200px;
+  border-radius: 8px;
+}
+.weekly_best .best_slide_wrap .best_main .book_info {
+  margin-top: 10px;
+}
+.weekly_best .best_slide_wrap .best_main .book_info .rank {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00b894;
+}
+.weekly_best .best_slide_wrap .best_main .book_info .tags {
+  margin-top: 6px;
+}
+.weekly_best .best_slide_wrap .best_main .book_info .tags span {
+  font-size: 13px;
+  margin-right: 8px;
+  color: #888;
+}
+.weekly_best .best_slide_wrap .best_list {
+  flex: 1;
+}
+.weekly_best .best_slide_wrap .best_list ul {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 115px 120px;
+  gap: 12px;
+}
+.weekly_best .best_slide_wrap .best_list li {
+  width: 120px;
+}
+.weekly_best .best_slide_wrap .best_list li .book {
+  position: relative;
+}
+.weekly_best .best_slide_wrap .best_list li .book img {
   width: 100%;
-  height: auto;
   border-radius: 6px;
 }
-.weekly_best .best_main .book_info {
-  margin-top: 12px;
-}
-.weekly_best .best_main .book_info .rank {
-  display: inline-block;
-  font-size: 24px;
-  font-weight: bold;
-  color: #1dcd9f;
-}
-.weekly_best .best_main .book_info .book_title {
-  display: block;
-  font-size: 16px;
-  font-weight: 600;
-  margin: 8px 0 4px;
-}
-.weekly_best .best_main .book_info .book_author {
-  font-size: 13px;
-  color: #666666;
-}
-.weekly_best .best_main .book_info .tags {
-  margin-top: 8px;
-}
-.weekly_best .best_main .book_info .tags span {
-  display: inline-block;
-  font-size: 12px;
-  color: #666666;
-  margin-right: 6px;
-}
-.weekly_best .best_list {
-  width: 60%;
-  position: relative;
-}
-.weekly_best .best_list ul {
-  display: flex;
-  gap: 10px;
-}
-.weekly_best .best_list ul li .book {
-  position: relative;
-}
-.weekly_best .best_list ul li .book img {
-  width: 100px;
-  height: 140px;
-  border-radius: 4px;
-}
-.weekly_best .best_list ul li .book .rank {
+.weekly_best .best_slide_wrap .best_list li .book .rank {
   position: absolute;
-  top: 4px;
-  left: 6px;
+  top: 5px;
+  left: 5px;
   background: #1dcd9f;
   color: #fff;
   font-size: 12px;
   padding: 2px 6px;
-  border-radius: 999px;
-}
-.weekly_best .best_list .btn-prev,
-.weekly_best .best_list .btn-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  font-size: 16px;
-  background: #eee;
   border-radius: 50%;
-  cursor: pointer;
-  border: none;
-}
-.weekly_best .best_list .btn-prev {
-  left: -30px;
-}
-.weekly_best .best_list .btn-next {
-  right: -30px;
 }
 
 /*md 추천*/

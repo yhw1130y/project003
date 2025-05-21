@@ -5,7 +5,7 @@ async function fetchBookByTitle(title) {
     }
   });
   const data = await response.json();
-  return data.documents[0]; 
+  return data.documents[0];
 }
 
 // 오늘의 책
@@ -70,33 +70,91 @@ mdRecommendTitles.forEach(title => {
     else console.warn(`❌ [검색 실패] "${title}"`);
   });
 });
-// 핫북
-function renderHotBook(book) {
-  const container = document.querySelector('.hot_books .swiper-slide');
-  const item = document.createElement('li');
-  item.innerHTML = `
-    <a href="${book.url}" target="_blank">
-      <img src="${book.thumbnail}" alt="${book.title}">
-      <div class="book_info">
-        <strong class="book_title">${book.title}</strong>
-        <span class="book_author">${book.authors.join(', ')}</span>
-      </div>
-    </a>
-  `;
-  container.appendChild(item);
-}
 
-const mdRecommendTitles = [
-  "내 꿈에 가끔만 놀러와",
-  "김켈리의 신비마트3",
-  "호수와 암실",
-  "고음질 명반 가이드북 3 - 음악이 없다면 오디오파일은 없다",
-  "모든 것이 양자 이론 - 세상을 이루는 17가지 기본 입자 이야기"
+// 베스트셀러
+const weeklyTitles = [
+  "채식주의자",
+  "흔한남매 19",
+  "모순",
+  "소년이 온다",
+  "결국 국민이 합니다 - 이재명의 인생과 정치철학",
+  "어제와 똑같은 내가 싫어서 심리학을 공부하기 시작했습니다",
+  "파과",
+  "쇼펜하우어 인생수업(리커버 에디션) - 한 번뿐인 삶 이렇게 살아라",
+  "단 한 번의 삶",
+  "홍학의 자리"
 ];
 
-mdRecommendTitles.forEach(title => {
-  fetchBookByTitle(title).then(book => {
-    if (book) renderMdBook(book);
-    else console.warn(`❌ [검색 실패] "${title}"`);
+let currentBooks = [];
+
+async function fetchWeeklyBooks() {
+  const promises = weeklyTitles.map(async (title, index) => {
+    const book = await fetchBookByTitle(title);
+
+    if (!book) {
+      console.warn(`❗ "${title}" 검색 결과 없음`);
+      return {
+        title: "검색결과 없음",
+        thumbnail: "./img/placeholder.jpg",
+        tags: ["No Data"],
+        rank: index + 1
+      };
+    }
+    return {
+      title: book.title,
+      thumbnail: book.thumbnail || './img/placeholder.jpg',
+      tags: [book.publisher, book.authors?.[0] || ''],
+      rank: index + 1
+    };
   });
+
+  currentBooks = await Promise.all(promises);
+  updateMainBook(currentBooks[0]);
+  renderListBooks();
+}
+
+function updateMainBook(book) {
+  const main = document.querySelector('.weekly_best .best_main');
+  main.querySelector('img').src = book.thumbnail;
+  main.querySelector('.rank').textContent = String(book.rank).padStart(2, '0');
+
+  const tags = main.querySelector('.tags');
+  tags.innerHTML = '';
+  book.tags.forEach(tag => {
+    const span = document.createElement('span');
+    span.textContent = '#' + tag;
+    tags.appendChild(span);
+  });
+}
+
+function renderListBooks() {
+  const list = document.querySelector('.weekly_best .best_list ul');
+  list.innerHTML = '';
+  for (let i = 1; i <= 5; i++) {
+    const book = currentBooks[i % currentBooks.length];
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div class="book">
+        <img src="${book.thumbnail}" alt="${book.title}">
+        <span class="rank">${book.rank}</span>
+      </div>
+    `;
+    list.appendChild(li);
+  }
+}
+
+document.querySelector('.weekly_best .btn-next').addEventListener('click', () => {
+  const first = currentBooks.shift();
+  currentBooks.push(first);
+  updateMainBook(currentBooks[0]);
+  renderListBooks();
 });
+
+document.querySelector('.weekly_best .btn-prev').addEventListener('click', () => {
+  const last = currentBooks.pop();
+  currentBooks.unshift(last);
+  updateMainBook(currentBooks[0]);
+  renderListBooks();
+});
+
+fetchWeeklyBooks();
