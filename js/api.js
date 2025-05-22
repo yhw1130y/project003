@@ -77,7 +77,7 @@ const weeklyTitles = [
   "흔한남매 19",
   "모순",
   "소년이 온다",
-  "결국 국민이 합니다 - 이재명의 인생과 정치철학",
+  "차가운 자본주의",
   "어제와 똑같은 내가 싫어서 심리학을 공부하기 시작했습니다",
   "파과",
   "쇼펜하우어 인생수업(리커버 에디션) - 한 번뿐인 삶 이렇게 살아라",
@@ -158,3 +158,135 @@ document.querySelector('.weekly_best .btn-prev').addEventListener('click', () =>
 });
 
 fetchWeeklyBooks();
+
+// 급상승 도서
+const rankBookTitles = [
+  "단다단 16",
+  "청설",
+  "오가미 츠미키와 기일상 2",
+  "워런 버핏 웨이",
+  "노랑무늬영원",
+  "엔비디아 젠슨 황 생각하는 기계-전 세계 최초 공식 자서전",
+  "나 혼자만 레벨업 14 - 한정판",
+  "괴수 8호 15",
+  "대도시의 사랑법",
+  "니체 인생수업(리커버 에디션) - 니체가 세상에 남긴 66가지 인생지혜",
+  "친구가 상처 줄 때 똑똑하게 나를 지키는 법",
+  "카구라바치 5",
+  "아프도록 수고한 당신에게 건강지속력",
+  "사카모토 홀리데이즈 1 특별판",
+  "과자 사면 과학 드립니다"
+];
+
+const rankBookList = document.querySelector(".rank_books .book_list");
+const prevBtn = document.querySelector(".rank-btn-prev");
+const nextBtn = document.querySelector(".rank-btn-next");
+
+let rankBooks = [];
+let currentPage = 0;
+const perPage = 5;
+
+function renderPage() {
+  rankBookList.innerHTML = "";
+  const start = currentPage * perPage;
+  const end = start + perPage;
+  const slicedBooks = rankBooks.slice(start, end);
+
+  slicedBooks.forEach(book => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <a href="${book.url}" target="_blank">
+        <img src="${book.thumbnail}" alt="${book.title}">
+        <div class="book_info">
+          <strong class="book_title">${book.title}</strong>
+          <span class="book_author">${book.authors?.join(', ')}</span>
+        </div>
+      </a>
+    `;
+    rankBookList.appendChild(li);
+  });
+}
+
+prevBtn.addEventListener("click", () => {
+  if (currentPage > 0) {
+    currentPage--;
+    renderPage();
+  }
+});
+
+nextBtn.addEventListener("click", () => {
+  if ((currentPage + 1) * perPage < rankBooks.length) {
+    currentPage++;
+    renderPage();
+  }
+});
+
+Promise.all(
+  rankBookTitles.map(title => fetchBookByTitle(title))
+).then(results => {
+  rankBooks = results.filter(book => book);
+  renderPage();
+});
+
+// 핫북
+const hotBookTitles = [
+  "엄마 당신의 이야기를 들려주세요(당신의 이야기를 들려주세요)",
+  "아빠 당신의 이야기를 들려주세요(당신의 이야기를 들려주세요)",
+  "슬픔",
+  "나민애의 동시 읽기 좋은 날 - 도란도란 읽고 또박또박 따라 쓰는 감수성 동시 수업",
+  "단 한 번의 삶",
+  "니체 인생수업(리커버 에디션) - 니체가 세상에 남긴 66가지 인생지혜",
+  "슈뻘맨 무인 편의점 히어로 1 - 수상한 편의점 등장",
+  " 티니핑 댄스핑은 별이 다섯 개",
+  "빛과 실-2024 노벨문학상 수상 강연문 수록",
+  "채식주의자"
+];
+
+const hotBookList = document.querySelector(".hot_books .book_list");
+const hotPrevBtn = document.querySelector(".hot-btn-prev");
+const hotNextBtn = document.querySelector(".hot-btn-next");
+
+let hotBooks = [];
+let hotCurrentPage = 0;
+const hotPerPage = 5;
+
+function renderHotPage() {
+  hotBookList.innerHTML = "";
+  const start = hotCurrentPage * hotPerPage;
+  const end = start + hotPerPage;
+  const sliced = hotBooks.slice(start, end);
+
+  sliced.forEach(book => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <img src="${book.thumbnail}" alt="${book.title}">
+      <div class="book_info">
+        <strong class="book_title">${book.title}</strong>
+        <span class="book_author">${book.authors?.join(', ')}</span>
+      </div>
+    `;
+    hotBookList.appendChild(li);
+  });
+}
+
+hotPrevBtn.addEventListener("click", () => {
+  if (hotCurrentPage > 0) {
+    hotCurrentPage--;
+    renderHotPage();
+  }
+});
+
+hotNextBtn.addEventListener("click", () => {
+  const maxPage = Math.floor(hotBooks.length / hotPerPage);
+  if (hotCurrentPage < maxPage) {
+    hotCurrentPage++;
+    renderHotPage();
+  }
+});
+
+// API 호출 및 렌더링
+Promise.all(hotBookTitles.map(title => fetchBookByTitle(title)))
+  .then(results => {
+    hotBooks = results.filter(book => book);
+    renderHotPage();
+  });

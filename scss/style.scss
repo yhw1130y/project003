@@ -310,6 +310,7 @@ button {
         display: block;
       }
     }
+
     .autoplay-progress {
       position: absolute;
       right: 16px;
@@ -503,81 +504,109 @@ button {
     }
   }
 
-.best_slide_wrap {
-  background-color: ivory;
-  width: 1060px;
-  height: 250px;
-  display: flex;
-  align-items: flex-start;
-  gap: 40px;
-  margin: 0 auto;
+  .best_slide_wrap {
+    background-color: ivory;
+    width: 1060px;
+    height: 250px;
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin: 0 auto;
 
-  .best_main {
-    width: 200px;
-    flex-shrink: 0;
-
-    img {
+    .best_main {
       width: 200px;
-      border-radius: 8px;
-    }
+      flex-shrink: 0;
 
-    .book_info {
-      margin-top: 10px;
-
-      .rank {
-        font-size: 20px;
-        font-weight: bold;
-        color: #00b894;
+      img {
+        width: 200px;
+        border-radius: 8px;
       }
 
-      .tags {
-        margin-top: 6px;
-
-        span {
-          font-size: 13px;
-          margin-right: 8px;
-          color: #888;
-        }
-      }
-    }
-  }
-
-  .best_list {
-    flex: 1;
-
-    ul {
-      display: flex;
-      flex-direction: row-reverse;
-      margin: 115px 120px;
-      gap: 12px;
-    }
-
-    li {
-      width: 120px;
-
-      .book {
-        position: relative;
-
-        img {
-          width: 100%;
-          border-radius: 6px;
-        }
+      .book_info {
+        margin-top: 10px;
 
         .rank {
-          position: absolute;
-          top: 5px;
-          left: 5px;
-          background: #1dcd9f;
-          color: #fff;
-          font-size: 12px;
-          padding: 2px 6px;
-          border-radius: 50%;
+          font-size: 20px;
+          font-weight: bold;
+          color: #00b894;
+        }
+
+        .tags {
+          margin-top: 6px;
+
+          span {
+            font-size: 13px;
+            margin-right: 8px;
+            color: #888;
+          }
+        }
+      }
+    }
+
+    .best_list {
+      flex: 1;
+
+      .slide_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; // 가운데 정렬
+    position: relative;
+    margin-top: 117px; // ul 위치 맞추기
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 12px;
+    margin: 0 20px; // 버튼과 간격
+  }
+
+  .btn-prev,
+  .btn-next {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #eee;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    &:hover {
+      background: #ccc;
+    }
+  }
+}
+
+      li {
+        width: 120px;
+
+        .book {
+          position: relative;
+
+          img {
+            width: 100%;
+            border-radius: 6px;
+          }
+
+          .rank {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: #1dcd9f;
+            color: #fff;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 50%;
+          }
         }
       }
     }
   }
-}
-}
+
 
 /*md 추천*/
 .md_recommend {
@@ -641,103 +670,173 @@ button {
 }
 
 /*급상승 도서*/
-.rising_books {
-  padding: 60px 0;
-  background-color: $color-gray-light;
+.rank_books {
+  padding: 40px 0;
 
-  .section_title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
+  .inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    position: relative;
   }
 
-  .rising_content {
+  .rank_slide_wrap {
     display: flex;
-    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
 
-    .book_img {
-      width: 200px;
+  .book_list {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+    overflow: hidden;
 
+    li {
+      flex: 0 0 calc((100% - 80px) / 5); // 5개, gap 20px x 4 = 80px
       img {
         width: 100%;
-        height: auto;
+        border-radius: 6px;
       }
-    }
 
-    .ranking_list {
-      flex: 1;
+      .book_info {
+        margin-top: 8px;
 
-      ol {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        li {
+        .book_title {
+          font-weight: bold;
           font-size: 14px;
+        }
 
-          em {
-            font-weight: bold;
-            color: $color-accent;
-            margin-right: 6px;
-          }
-
-          a {
-            color: $color-main;
-
-            &:hover {
-              text-decoration: underline;
-            }
-          }
+        .book_author {
+          font-size: 12px;
+          color: #888;
         }
       }
     }
+  }
+
+  .rank-btn-prev,
+  .rank-btn-next {
+    background: #eee;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+
+    &:hover {
+      background: #ccc;
+    }
+  }
+
+  .rank-btn-prev {
+    left: -50px;
+  }
+
+  .rank-btn-next {
+    right: -50px;
+  }
+}
+/*핫북*/
+.hot_books {
+  padding: 40px 0;
+
+  .inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hot-slide-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .book_list {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+    overflow: hidden;
+
+    li {
+      flex: 0 0 calc((100% - 80px) / 5); // 5권 + 20px gap * 4 = 80px
+      img {
+        width: 100%;
+        border-radius: 6px;
+      }
+
+      .book_info {
+        margin-top: 8px;
+
+        .book_title {
+          font-weight: bold;
+          font-size: 14px;
+        }
+
+        .book_author {
+          font-size: 12px;
+          color: #888;
+        }
+      }
+    }
+  }
+
+  .hot-btn-prev,
+  .hot-btn-next {
+    background: #eee;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+
+    &:hover {
+      background: #ccc;
+    }
+  }
+
+  .hot-btn-prev {
+    left: -50px;
+  }
+
+  .hot-btn-next {
+    right: -50px;
   }
 }
 
-/*핫북*/
-.hot_books {
-  padding: 60px 0;
-  background-color: $color-white;
+.admid {
+  width: 100%;
+  height: 120px;
+  background-color: #fbd642; // 이미지 색상과 최대한 유사하게 (예시)
+  //padding: 40px 0; // 위아래 여백
+  display: flex;
+  justify-content: center;
 
-  .section_title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-
-  .hotbook-swiper {
-    position: relative;
-
-    .swiper-wrapper {
-      display: flex;
-    }
-
-    .swiper-slide {
-      width: 200px !important;
-      margin-right: 20px;
-
-      a {
-        display: block;
-
-        img {
-          width: 100%;
-          height: auto;
-          border-radius: 6px;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-      }
-    }
-
-    .swiper-button-prev,
-    .swiper-button-next {
-      color: $color-main;
-      top: 35%;
-    }
-
-    .swiper-pagination {
-      bottom: 0;
-      text-align: center;
-    }
+  img {
+    display: block;
+    max-width: 1060px;
+    width: 100%; // or auto
+    height: 120px;
   }
 }
 
