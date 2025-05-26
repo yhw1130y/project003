@@ -59,3 +59,4 @@ swiperEl.addEventListener("autoplaytimeleft", (e) => {
 swiperEl.initialize();
 
 });
+

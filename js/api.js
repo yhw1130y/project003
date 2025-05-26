@@ -290,3 +290,93 @@ Promise.all(hotBookTitles.map(title => fetchBookByTitle(title)))
     hotBooks = results.filter(book => book);
     renderHotPage();
   });
+
+// 이런책 어떠세요 동작 파트
+
+$('.md_prev').click(function () {
+   $('.md_slide_list:last').prependTo('#md_slide');
+   $('#md_slide').css('margin-left', "-31.4%");
+   $('#md_slide').stop().animate({ marginLeft: 0 }, 800);
+});
+
+$('.md_next').click(function () {
+   $('#md_slide').stop().animate({ marginLeft: "-31.4%" }, 800, function () {
+      $('.md_slide_list:first').appendTo('#md_slide');
+      $('#md_slide').css({ marginLeft: 0 });
+   });
+});
+
+// 이런책 북 데이터
+
+const bookQueryList = [
+  '한강',             // 1
+  '아기공룡둘리',      // 2
+  '프란치스코 교황',   // 3
+  '바르가스 요사',     // 4
+  '사계절 시리즈',     // 5
+  'AI',               // 6
+  '트럼프'            // 7
+  // 8, 9, 10 원하는대로 추가 가능
+];
+
+// 네 REST API 키로 교체!
+const KAKAO_API_KEY = '7dc8a40298c87972a469f758f14bd142';
+
+async function fetchBooks(query) {
+  const params = new URLSearchParams({
+    target: "title",
+    query: query,
+    size: 4
+  });
+  const realUrl = `https://dapi.kakao.com/v3/search/book?${params}`;
+  // Proxy로 CORS 우회 (개발환경에서만, 서비스에서는 서버 중계 권장)
+  const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(realUrl)}`;
+  const response = await fetch(proxyUrl, {
+    method: 'GET',
+    headers: {
+      Authorization: `KakaoAK ${KAKAO_API_KEY}`
+    }
+  });
+  if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
+  return response.json();
+}
+
+async function bookDataMdApi() {
+  for (let i = 0; i < bookQueryList.length; i++) {
+    const query = bookQueryList[i];
+    try {
+      const data = await fetchBooks(query);
+      const books = data.documents.filter(b => b.thumbnail && b.title && b.authors && b.contents);
+      if (books.length < 4) continue;
+
+      // 각 리스트에 4권 썸네일
+      let imgs = '';
+      for (let j = 0; j < 4; j++) {
+        imgs += `<img src="${books[j].thumbnail}" alt="${books[j].title}" />`;
+      }
+
+      const info = books[0]; // 대표책 정보
+
+      $(`.md_slide_list${i+1}`).append(`
+        <div class="md_list_img">
+          ${imgs}
+        </div>
+        <div class="md_list_text">
+          <h3>${info.title}</h3>
+          <p>${info.authors.join(', ')}</p>
+          <span>${info.contents}</span>
+        </div>
+        <div class="md_list_logo">
+          <img src="https://cdn.ypbooks.co.kr/front_web/assets/img/temp/yp_md_default.png" alt="#">
+          <span>영풍문고 온라인 MD</span>
+        </div>
+      `);
+    } catch (error) {
+      console.error(`${query} API 오류:`, error);
+    }
+  }
+}
+
+$(function() {
+  bookDataMdApi();
+});

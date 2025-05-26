@@ -713,61 +713,138 @@ button {
 }
 
 /*이런 책*/
-.recommend_cards {
-  padding: 60px 0;
-  background-color: #ffffff;
-}
-.recommend_cards .section_title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-.recommend_cards .card_list_wrap {
+#md_content {
+  width: 100%;
+  min-width: 1400px;
+  height: 518px;
+  margin-bottom: 50px;
   position: relative;
+}
+#md_content .title h2 {
+  margin-left: 0;
+  text-align: left;
+}
+#md_content .md_prev,
+#md_content .md_next {
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  color: #999;
+  border-radius: 50%;
+  background-color: #eee;
+  cursor: pointer;
+}
+#md_content .md_prev i,
+#md_content .md_next i {
+  line-height: 40px;
+  font-size: 30px;
+}
+#md_content .md_prev {
+  left: 15%;
+}
+#md_content .md_next {
+  right: 15%;
+}
+
+#md_slide_content {
+  width: 100%;
+  height: 485px;
+  position: relative;
+  overflow: hidden;
+  color: #333;
+}
+#md_slide_content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  z-index: 1;
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #fff 74%);
+}
+#md_slide_content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 74%);
+}
+
+#md_slide {
+  position: absolute;
+  width: 300%;
+  left: 4.5%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.md_slide_list {
+  width: 8%;
+  height: 405px;
+  min-width: 540px;
+  margin-right: 1%;
+  box-shadow: 2px 1px 5px #b1b1b1;
+  border-radius: 10px;
+  color: #333;
+}
+.md_slide_list .md_list_img {
+  width: 100%;
+  height: 55%;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 10px 10px 0 0;
+  align-items: center;
+  background-color: rgba(255, 228, 196, 0.623);
+}
+.md_slide_list .md_list_img img {
+  width: 120px;
+  height: 180px;
+  border-radius: 5px;
+}
+.md_slide_list .md_list_text {
+  width: 88%;
+  height: 28%;
+  margin: 10px auto;
+}
+.md_slide_list .md_list_text p {
+  width: 100%;
+  height: auto;
+  padding: 5px 0;
+  font-size: 13px;
+  color: #555;
+}
+.md_slide_list .md_list_text span {
+  width: 100%;
+  height: 50%;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  color: #555;
+}
+.md_slide_list .md_list_logo {
+  width: 90%;
+  height: 12%;
+  margin: 0 auto;
+  border-top: 1px solid #777;
   display: flex;
   align-items: center;
 }
-.recommend_cards .card_list_wrap .card-prev,
-.recommend_cards .card_list_wrap .card-next {
-  width: 30px;
-  height: 30px;
-  font-size: 18px;
-  background: #eee;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
+.md_slide_list .md_list_logo img {
+  width: 27px;
+  height: 27px;
+  margin-right: 10px;
+  border-radius: 50px;
 }
-.recommend_cards .card_list_wrap .card_list {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding: 0 10px;
-}
-.recommend_cards .card_list_wrap .card_list li {
-  flex: 0 0 auto;
-  width: 160px;
-}
-.recommend_cards .card_list_wrap .card_list li a {
-  display: block;
-}
-.recommend_cards .card_list_wrap .card_list li a img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-}
-.recommend_cards .card_list_wrap .card_list li a .book_info {
-  margin-top: 10px;
-}
-.recommend_cards .card_list_wrap .card_list li a .book_info .book_title {
-  font-size: 14px;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 4px;
-  color: #1e1e1e;
-}
-.recommend_cards .card_list_wrap .card_list li a .book_info .book_author {
-  font-size: 12px;
-  color: #666666;
+.md_slide_list .md_list_logo span {
+  font-size: 13px;
 }
 
 /*좋은 평가*/
