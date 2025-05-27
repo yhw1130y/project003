@@ -60,3 +60,17 @@ swiperEl.initialize();
 
 });
 
+// 공지사항
+const notices = [
+  '[공지] 개인정보 처리방침 개정 안내 (2024.06.01)',
+  '[이벤트] 2024 상반기 사은품 지급 기준 변경',
+  '[안내] 모바일 앱 업데이트 안내'
+];
+let idx = 0;
+
+setInterval(() => {
+  idx = (idx + 1) % notices.length;
+  $('#noticeRolling').fadeOut(200, function() {
+    $(this).text(notices[idx]).fadeIn(200);
+  });
+}, 2500);

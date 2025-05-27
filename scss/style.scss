@@ -841,16 +841,16 @@ button {
 }
 
 /*이런 책*/
-#md_content {
+#md_bookpart {
   width: 100%;
   min-width: 1400px;
   height: 518px;
   margin-bottom: 50px;
   position: relative;
 
-  .title h2 {
-  margin-left: 0;
-  text-align: left;
+  .title  {
+  margin: 150px 860px 10px 0;
+  text-align: center;
 }
 
   .md_prev,
@@ -880,7 +880,7 @@ button {
   }
 }
 
-#md_slide_content {
+#md_slide_book {
   width: 100%;
   height: 485px;
   position: relative;
@@ -918,13 +918,13 @@ button {
   justify-content: space-between;
 }
 
-.md_slide_list {
+.md_list {
   width: 8%;
   height: 405px;
   min-width: 540px;
   margin-right: 1%;
   box-shadow: 2px 1px 5px #b1b1b1;
-  border-radius: 10px;
+  border-radius: 8px;
   color: #333;
 
   .md_list_img {
@@ -934,7 +934,7 @@ button {
     justify-content: space-evenly;
     border-radius: 10px 10px 0 0;
     align-items: center;
-    background-color: rgba(255, 228, 196, 0.623);
+    background-color: ivory;
 
     img {
       width: 120px;
@@ -987,128 +987,240 @@ button {
   }
 }
 /*좋은 평가*/
-.good_reviews {
-  padding: 60px 0;
-  background-color: $color-gray-light;
+.good_review_section {
+  max-width: 1200px; margin: 0 auto 32px; width: 100%;
 
-  .section_title {
-    font-size: 20px;
+  h2 {
+    font-size: 21px;
     font-weight: bold;
-    margin-bottom: 20px;
-  }
-
-  .review_book_list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-
-    li {
-      width: 160px;
-
-      a {
-        display: block;
-
-        img {
-          width: 100%;
-          height: auto;
-          border-radius: 4px;
-        }
-
-        .book_info {
-          margin-top: 10px;
-
-          .book_title {
-            font-size: 14px;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 4px;
-            color: $color-main;
-          }
-
-          .book_author {
-            font-size: 12px;
-            color: $color-sub;
-          }
-        }
-      }
-    }
+    margin: 200px 72px 50px;
+    span { color: #f6ba35; }
   }
 }
+.good_review_slider_wrap { display: flex; align-items: center; }
+.good_slider_viewport { width: 1140px; overflow: hidden; }
+.good_slider { display: flex; transition: margin-left 0.6s; }
+.good_card {
+  width: 330px; min-width: 350px; max-width: 350px;
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 4px 16px #eee;
+  margin: 0 10px; display: flex; flex-direction: column;
+}
+.good_card_top {
+  position: relative;
+  width: 100%; height: 300px;
+  border-radius: 16px 0px 0 0;
+  overflow: hidden;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.good_top_bgimg {
+  position: absolute; left: 0; top: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  z-index: 1;
+}
+.good_top_filter {
+  position: absolute; left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(30,30,30,0.48);
+  z-index: 2;
+}
+.good_top_text {
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%;
+  z-index: 3;
+  color: #fff;
+  font-size: 19px;
+  font-weight: bold;
+  text-align: top;
+  margin: 0px 0px 200px;
+  padding: 20px 18px 18px 18px;
+  box-sizing: border-box;
+  border-radius: 0 0 16px 16px;
+  letter-spacing: -0.5px;
+  line-height: 1.38;
+}
+.good_card_bottom { display: flex; align-items: flex-end; padding: 16px; }
+.good_card_bottom img {
+  width: 64px; height: 96px;
+  border-radius: 7px; margin-right: 12px; object-fit: cover;
+  box-shadow: 0 2px 7px #e7e7e7;
+}
+.good_title {
+  font-weight: bold; margin-bottom: 5px; font-size: 15px;
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 200px;
+}
+.good_rate { color: #f7b308; font-size: 14px; margin-bottom: 2px; }
+.good_review_cnt { font-size: 13px; color: #7b7b7b; }
+.good_prev, .good_next {
+  border: none; background: #fff;
+  box-shadow: 0 2px 9px #eee;
+  border-radius: 50%; width: 38px; height: 38px;
+  font-size: 21px; color: #aaa; cursor: pointer; margin: 0 10px;
+}
+.good_dots { margin-top: 16px; text-align: center; }
+.good_dots .dot {
+  display: inline-block;
+  width: 9px; height: 9px; border-radius: 50%; background: #ccc; margin: 0 3px;
+}
+.good_dots .dot.active { background: #333; }
+
 
 /*공지사항*/
-.notice_area {
-  padding: 40px 0;
-  background-color: $color-white;
-  border-top: 1px solid $color-line;
-  border-bottom: 1px solid $color-line;
 
-  .section_title {
-    font-size: 18px;
+.notice_one_line_wrap {
+  max-width: 1060px;
+  width: 100%;
+  margin: 0 auto; // 가운데 정렬
+  box-sizing: border-box;
+}
+
+.notice_one_line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 40px;
+
+  .notice_label {
+    font-size: 17px;
     font-weight: bold;
-    margin-bottom: 16px;
+    color: #111;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
-
-  .notice_list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    li a {
-      font-size: 14px;
-      color: $color-main;
-
-      &:hover {
-        text-decoration: underline;
-        color: $color-accent;
-      }
-    }
+  .notice_text {
+    font-size: 15px;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 900px; // or calc(1060px - label width - gap)
+    display: block;
   }
 }
 
 /*푸터*/
-.site_footer {
-  background-color: #f5f5f5;
-  padding: 40px 0;
-  font-size: 13px;
-  color: $color-sub;
+.footer {
+  background: #fff;
+  color: #222;
+  font-size: 14px;
+  padding-top: 32px;
+  border-top: 1px solid #eee;
 
   .footer_top {
-    margin-bottom: 20px;
-
-    .footer_menu {
+    max-width: 1060px;
+    margin: 0 auto;
+    display: flex;
+    gap: 48px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+  }
+  .footer_cs {
+    flex: 0 0 250px;
+    .cs_title {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .cs_phone {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .cs_info {
+      margin-bottom: 4px;
+      color: #666;
+      span { color: #888; margin-left: 4px; }
+    }
+    .cs_btns {
+      margin-top: 14px;
       display: flex;
-      gap: 20px;
-
-      li a {
-        color: $color-sub;
-
-        &:hover {
-          color: $color-main;
-          text-decoration: underline;
-        }
+      gap: 8px;
+      button {
+        background: #f7f7f7;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 6px 18px;
+        color: #444;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background .2s;
+        &:hover { background: #e4e4e4; }
+      }
+    }
+  }
+  .footer_link_group {
+    flex: 1 1 auto;
+    display: flex;
+    gap: 40px;
+    justify-content: flex-end;
+  }
+  .footer_col {
+    .footer_col_title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #111;
+    }
+    ul {
+      margin: 0; padding: 0;
+      list-style: none;
+    }
+    li {
+      margin-bottom: 4px;
+      a {
+        color: #444;
+        text-decoration: none;
+        font-size: 14px;
+        &:hover { text-decoration: underline; }
       }
     }
   }
 
-  .footer_info {
-    line-height: 1.6;
-
-    p {
-      margin-bottom: 10px;
-    }
-
-    .copyright {
-      font-size: 12px;
-      color: #999;
+  .footer_bottom {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 26px 0 18px 0;
+  }
+  .footer_policy {
+    display: flex;
+    gap: 18px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    a {
+      color: #222;
+      text-decoration: none;
+      font-weight: 500;
+      &:hover { text-decoration: underline; color: #3db668; }
     }
   }
-
-  .footer_logo {
-    margin-top: 20px;
-    text-align: right;
-
-    img {
-      height: 40px;
+  .footer_logo_info {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    .footer_logo img {
+      width: 110px; // 적절히 조절
+      margin-bottom: 6px;
     }
+    .footer_corp_info {
+      color: #888;
+      font-size: 13px;
+      line-height: 1.7;
+      a {
+        color: #229760; font-weight: 500;
+        text-decoration: underline;
+      }
+      span {
+        display: inline-block;
+        margin-right: 8px;
+      }
+    }
+  }
+  .footer_copyright {
+    color: #999;
+    font-size: 13px;
+    margin-top: 10px;
+    letter-spacing: 0.1em;
   }
 }

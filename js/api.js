@@ -291,92 +291,193 @@ Promise.all(hotBookTitles.map(title => fetchBookByTitle(title)))
     renderHotPage();
   });
 
-// 이런책 어떠세요 동작 파트
 
-$('.md_prev').click(function () {
-   $('.md_slide_list:last').prependTo('#md_slide');
-   $('#md_slide').css('margin-left', "-31.4%");
-   $('#md_slide').stop().animate({ marginLeft: 0 }, 800);
-});
+// 이런책 어떠세요 동작 파트
+const CARD_WIDTH = 353.33 + 10; // 카드+마진(px)
+const VISIBLE_CARDS = 3; // 한 번에 3장 보임
 
 $('.md_next').click(function () {
-   $('#md_slide').stop().animate({ marginLeft: "-31.4%" }, 800, function () {
-      $('.md_slide_list:first').appendTo('#md_slide');
-      $('#md_slide').css({ marginLeft: 0 });
-   });
+  $('#md_slide').animate({ marginLeft: -CARD_WIDTH }, 500, function () {
+    $('#md_slide .md_list:first').appendTo('#md_slide');    
+    $('#md_slide').css('margin-left', 0);
+  });
 });
 
-// 이런책 북 데이터
+$('.md_prev').click(function () {
+  $('#md_slide .md_list:last').prependTo('#md_slide');
+  $('#md_slide').css('margin-left', -CARD_WIDTH);
+  $('#md_slide').animate({ marginLeft: 0 }, 500);
+});
 
-const bookQueryList = [
-  '한강',             // 1
-  '아기공룡둘리',      // 2
-  '프란치스코 교황',   // 3
-  '바르가스 요사',     // 4
-  '사계절 시리즈',     // 5
-  'AI',               // 6
-  '트럼프'            // 7
-  // 8, 9, 10 원하는대로 추가 가능
-];
-
-// 네 REST API 키로 교체!
-const KAKAO_API_KEY = '7dc8a40298c87972a469f758f14bd142';
-
+// 이런책 불러오기
 async function fetchBooks(query) {
-  const params = new URLSearchParams({
-    target: "title",
-    query: query,
-    size: 4
-  });
-  const realUrl = `https://dapi.kakao.com/v3/search/book?${params}`;
-  // Proxy로 CORS 우회 (개발환경에서만, 서비스에서는 서버 중계 권장)
-  const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(realUrl)}`;
-  const response = await fetch(proxyUrl, {
-    method: 'GET',
-    headers: {
-      Authorization: `KakaoAK ${KAKAO_API_KEY}`
-    }
-  });
-  if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
-  return response.json();
+   const params = new URLSearchParams({
+      target: "title",
+      query,
+   });
+   const url = `https://dapi.kakao.com/v3/search/book?${params}`;
+
+   const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+         Authorization: `KakaoAK 7dc8a40298c87972a469f758f14bd142`
+      }
+   });
+
+   if (!response.ok) {
+      throw new Error(`HTTP 오류: ${response.status}`);
+   }
+
+   return response.json();
 }
 
-async function bookDataMdApi() {
-  for (let i = 0; i < bookQueryList.length; i++) {
-    const query = bookQueryList[i];
-    try {
-      const data = await fetchBooks(query);
-      const books = data.documents.filter(b => b.thumbnail && b.title && b.authors && b.contents);
-      if (books.length < 4) continue;
 
-      // 각 리스트에 4권 썸네일
-      let imgs = '';
-      for (let j = 0; j < 4; j++) {
-        imgs += `<img src="${books[j].thumbnail}" alt="${books[j].title}" />`;
-      }
+async function bookDataMd() {
+   try {
+      const querys = ['후지모토', '한강', '추리','바르가스','AI','티니핑', '리그오브','사계절','경제','트럼프'];
 
-      const info = books[0]; // 대표책 정보
+      querys.forEach(async (query, i) => {
+         const data = await fetchBooks(query);
 
-      $(`.md_slide_list${i+1}`).append(`
-        <div class="md_list_img">
-          ${imgs}
+         //썸네일이 빈 문자열인것은 제외
+         const origin = data.documents;
+         let book = origin.filter((val) => {
+            return val.thumbnail != '' && val.contents != '';
+         })
+    
+         const divs = $('#md_slide').find('.md_list').eq(i);  
+            divs.append(`
+               <div class="md_list_img">
+                  <img src=${data.documents[0].thumbnail}/>
+                  <img src=${data.documents[1].thumbnail}/>
+                  <img src=${data.documents[2].thumbnail}/>
+                  <img src=${data.documents[3].thumbnail}/>
+               </div>
+               <div class="md_list_text">
+                  <h3>${data.documents[0].title}</h3>
+                  <p>${data.documents[0].authors}</p>
+                  <span>${data.documents[0].contents}</span>
+               </div>
+                  <div class="md_list_logo">
+                  <img src="./img/cardlogo.png" alt="#">
+                  <span>영풍문고 온라인 MD</span>
+               </div>  
+          `);
+
+      })
+   } catch (error) {
+      console.log('에러발생', error);
+   }
+}
+
+bookDataMd();
+
+// 좋은 평가
+
+// 1. 카드 상단 이미지, 리뷰텍스트 배열 (12개씩 채우면 됨)
+const cardBgImgs = [
+  "./img/background.png", "./img/background2.png", "./img/background3.png"
+];
+const cardTexts = [
+  "목소리로 변화하는 대화의 힘! 심리상담사가 추천하는 방법.",
+  "10대도 지친다! 셀프케어가 필요한 이유.",
+  "하나가 살기 위해서는 왜 다른 하나가 죽어야하는가?",
+  "알수없는 우리학교 미스터리, 브이로그로 푼다!",
+  "사장님 필수 회계, 돈 남기는 장사의 시작.",
+  "살아있는 전설, 최고령 사교 클럽의 비밀.",
+  "뭔가 자꾸 먹고 싶을 때, 이 책을 펼쳐라!",
+  "주식 실패는 없다! 부자아빠의 트레이닝.",
+  "몸과 마음을 회복하는 다정하고 이성적인 뇌과학 처방전.",
+  "초등 영문법! 이제 외우지 말고 리딩으로 풀자.",
+  "마음을 채우는 심리학, 일년, 열두 달의 슬픔과 기쁨.",
+  "논술이 맛있어지는 초등 글쓰기의 모든 것!"
+];
+
+// 2. 책 제목 배열(12권)
+const bookTitles = [
+  "목소리의 표정 - 심리상담사의 나답게 말하기 삶을 바꾸는 대화 마인드셋",
+  "10대도 피곤하다(큰글자도서) - 청소년들의 활력을 위한 셀프케어",
+  "혁명가 붓다 - 붓다의 시선으로 그의 삶으로",
+  "미스터리 브이로그(우리학교 소설 읽는 시간)",
+  "사장님이여 회계하라 - 돈 남기는 장사의 비결",
+  "웬만해선 죽을 수 없는 최고령 사교 클럽",
+  "식탐 해방 - 살찌지 않는 뇌를 만드는 21일 식습관 혁명",
+  "실패를 성공으로 바꾸는 주식투자의 기술 - 초보 투자자를 위한 부자아빠의 핵심 트레이닝",
+  "나는 왜 아무것도 하기 싫을까 - 나도 모르게 방전된 몸과 마음을 회복하는 뇌과학 처방전",
+  "바빠 초등 영문법 써먹는 리딩 2 Reading with grammar - 초등 영문법과 리딩의 연결 고리를 단단하게!",
+  "이달의 심리학 - 일 년 열두 달 마음의 달력",
+  "학교 선생님이 콕 집은 초등 처음 글쓰기 2 - 안상현 쌤의 맛있는 논술 레시피"
+];
+
+// 3. 카카오 도서 API fetch
+async function fetchBookInfo(query) {
+  const params = new URLSearchParams({
+    target: "title",
+    query,
+    size: 1
+  });
+  const url = `https://dapi.kakao.com/v3/search/book?${params}`;
+  const response = await fetch(url, {
+    headers: { Authorization: "KakaoAK 7dc8a40298c87972a469f758f14bd142" } // 본인 REST API키로 교체
+  });
+  if (!response.ok) return null;
+  const data = await response.json();
+  return data.documents && data.documents[0] ? data.documents[0] : null;
+}
+
+// 4. 카드 12개 자동 렌더링
+async function renderGoodCards() {
+  $('#good_slider').empty();
+  for (let i = 0; i < 12; i++) {
+    let info = await fetchBookInfo(bookTitles[i]);
+    let img = info && info.thumbnail ? info.thumbnail : 'https://via.placeholder.com/64x96?text=No+Image';
+    let title = info && info.title ? info.title : bookTitles[i];
+    let rate = 5; // 별점 임의
+    let reviewCnt = Math.floor(Math.random() * 10) + 1; // 리뷰수 임의(1~10)
+    $('#good_slider').append(`
+      <div class="good_card">
+        <div class="good_card_top">
+          <img src="${cardBgImgs[i % cardBgImgs.length]}" alt="" class="good_top_bgimg">
+          <div class="good_top_filter"></div>
+          <div class="good_top_text">“${cardTexts[i]}”</div>
         </div>
-        <div class="md_list_text">
-          <h3>${info.title}</h3>
-          <p>${info.authors.join(', ')}</p>
-          <span>${info.contents}</span>
+        <div class="good_card_bottom">
+          <img src="${img}" alt="">
+          <div>
+            <div class="good_title">${title}</div>
+            <div class="good_rate">⭐ ${rate}</div>
+            <div class="good_review_cnt">리뷰 ${reviewCnt}개</div>
+          </div>
         </div>
-        <div class="md_list_logo">
-          <img src="https://cdn.ypbooks.co.kr/front_web/assets/img/temp/yp_md_default.png" alt="#">
-          <span>영풍문고 온라인 MD</span>
-        </div>
-      `);
-    } catch (error) {
-      console.error(`${query} API 오류:`, error);
-    }
+      </div>
+    `);
+  }
+  setDots();
+  slideTo(0);
+}
+renderGoodCards();
+
+// 5. 인디케이터(점) 자동 렌더
+function setDots() {
+  let pages = Math.ceil(12 / 3);
+  $('.good_dots').empty();
+  for (let i = 0; i < pages; i++) {
+    $('.good_dots').append(`<span class="dot${i===0?' active':''}"></span>`);
   }
 }
 
-$(function() {
-  bookDataMdApi();
+// 6. 슬라이드 기능 (3장씩 이동)
+let current = 0;
+$('.good_next').click(function () { slideTo(current + 1); });
+$('.good_prev').click(function () { slideTo(current - 1); });
+$('.good_dots').on('click', '.dot', function () {
+  slideTo($(this).index());
 });
+function slideTo(page) {
+  const max = Math.ceil(12 / 3) - 1;
+  if (page < 0) page = max;
+  if (page > max) page = 0;
+  current = page;
+  $('#good_slider').css('margin-left', -(current * 1110) + 'px');
+  $('.good_dots .dot').removeClass('active').eq(current).addClass('active');
+}

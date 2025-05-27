@@ -713,19 +713,19 @@ button {
 }
 
 /*이런 책*/
-#md_content {
+#md_bookpart {
   width: 100%;
   min-width: 1400px;
   height: 518px;
   margin-bottom: 50px;
   position: relative;
 }
-#md_content .title h2 {
-  margin-left: 0;
-  text-align: left;
+#md_bookpart .title {
+  margin: 150px 860px 10px 0;
+  text-align: center;
 }
-#md_content .md_prev,
-#md_content .md_next {
+#md_bookpart .md_prev,
+#md_bookpart .md_next {
   z-index: 3;
   position: absolute;
   top: 50%;
@@ -737,26 +737,26 @@ button {
   background-color: #eee;
   cursor: pointer;
 }
-#md_content .md_prev i,
-#md_content .md_next i {
+#md_bookpart .md_prev i,
+#md_bookpart .md_next i {
   line-height: 40px;
   font-size: 30px;
 }
-#md_content .md_prev {
+#md_bookpart .md_prev {
   left: 15%;
 }
-#md_content .md_next {
+#md_bookpart .md_next {
   right: 15%;
 }
 
-#md_slide_content {
+#md_slide_book {
   width: 100%;
   height: 485px;
   position: relative;
   overflow: hidden;
   color: #333;
 }
-#md_slide_content::before {
+#md_slide_book::before {
   content: "";
   position: absolute;
   top: 0;
@@ -766,7 +766,7 @@ button {
   z-index: 1;
   background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #fff 74%);
 }
-#md_slide_content::after {
+#md_slide_book::after {
   content: "";
   position: absolute;
   top: 0;
@@ -785,42 +785,42 @@ button {
   justify-content: space-between;
 }
 
-.md_slide_list {
+.md_list {
   width: 8%;
   height: 405px;
   min-width: 540px;
   margin-right: 1%;
   box-shadow: 2px 1px 5px #b1b1b1;
-  border-radius: 10px;
+  border-radius: 8px;
   color: #333;
 }
-.md_slide_list .md_list_img {
+.md_list .md_list_img {
   width: 100%;
   height: 55%;
   display: flex;
   justify-content: space-evenly;
   border-radius: 10px 10px 0 0;
   align-items: center;
-  background-color: rgba(255, 228, 196, 0.623);
+  background-color: ivory;
 }
-.md_slide_list .md_list_img img {
+.md_list .md_list_img img {
   width: 120px;
   height: 180px;
   border-radius: 5px;
 }
-.md_slide_list .md_list_text {
+.md_list .md_list_text {
   width: 88%;
   height: 28%;
   margin: 10px auto;
 }
-.md_slide_list .md_list_text p {
+.md_list .md_list_text p {
   width: 100%;
   height: auto;
   padding: 5px 0;
   font-size: 13px;
   color: #555;
 }
-.md_slide_list .md_list_text span {
+.md_list .md_list_text span {
   width: 100%;
   height: 50%;
   display: -webkit-box;
@@ -829,7 +829,7 @@ button {
   font-size: 13px;
   color: #555;
 }
-.md_slide_list .md_list_logo {
+.md_list .md_list_logo {
   width: 90%;
   height: 12%;
   margin: 0 auto;
@@ -837,118 +837,337 @@ button {
   display: flex;
   align-items: center;
 }
-.md_slide_list .md_list_logo img {
+.md_list .md_list_logo img {
   width: 27px;
   height: 27px;
   margin-right: 10px;
   border-radius: 50px;
 }
-.md_slide_list .md_list_logo span {
+.md_list .md_list_logo span {
   font-size: 13px;
 }
 
 /*좋은 평가*/
-.good_reviews {
-  padding: 60px 0;
-  background-color: #fafafa;
-}
-.good_reviews .section_title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-.good_reviews .review_book_list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.good_reviews .review_book_list li {
-  width: 160px;
-}
-.good_reviews .review_book_list li a {
-  display: block;
-}
-.good_reviews .review_book_list li a img {
+.good_review_section {
+  max-width: 1200px;
+  margin: 0 auto 32px;
   width: 100%;
-  height: auto;
-  border-radius: 4px;
 }
-.good_reviews .review_book_list li a .book_info {
-  margin-top: 10px;
+.good_review_section h2 {
+  font-size: 21px;
+  font-weight: bold;
+  margin: 200px 72px 50px;
 }
-.good_reviews .review_book_list li a .book_info .book_title {
+.good_review_section h2 span {
+  color: #f6ba35;
+}
+
+.good_review_slider_wrap {
+  display: flex;
+  align-items: center;
+}
+
+.good_slider_viewport {
+  width: 1140px;
+  overflow: hidden;
+}
+
+.good_slider {
+  display: flex;
+  transition: margin-left 0.6s;
+}
+
+.good_card {
+  width: 330px;
+  min-width: 350px;
+  max-width: 350px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px #eee;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.good_card_top {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 16px 0px 0 0;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.good_top_bgimg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 1;
+}
+
+.good_top_filter {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.48);
+  z-index: 2;
+}
+
+.good_top_text {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 3;
+  color: #fff;
+  font-size: 19px;
+  font-weight: bold;
+  text-align: top;
+  margin: 0px 0px 200px;
+  padding: 20px 18px 18px 18px;
+  box-sizing: border-box;
+  border-radius: 0 0 16px 16px;
+  letter-spacing: -0.5px;
+  line-height: 1.38;
+}
+
+.good_card_bottom {
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+
+.good_card_bottom img {
+  width: 64px;
+  height: 96px;
+  border-radius: 7px;
+  margin-right: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: 0 2px 7px #e7e7e7;
+}
+
+.good_title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 15px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 200px;
+}
+
+.good_rate {
+  color: #f7b308;
   font-size: 14px;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 4px;
-  color: #1e1e1e;
+  margin-bottom: 2px;
 }
-.good_reviews .review_book_list li a .book_info .book_author {
-  font-size: 12px;
-  color: #666666;
+
+.good_review_cnt {
+  font-size: 13px;
+  color: #7b7b7b;
+}
+
+.good_prev, .good_next {
+  border: none;
+  background: #fff;
+  box-shadow: 0 2px 9px #eee;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 21px;
+  color: #aaa;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.good_dots {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.good_dots .dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ccc;
+  margin: 0 3px;
+}
+
+.good_dots .dot.active {
+  background: #333;
 }
 
 /*공지사항*/
-.notice_area {
-  padding: 40px 0;
-  background-color: #ffffff;
-  border-top: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
+.notice_one_line_wrap {
+  max-width: 1060px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
-.notice_area .section_title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 16px;
-}
-.notice_area .notice_list {
+
+.notice_one_line {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: 16px;
+  height: 40px;
 }
-.notice_area .notice_list li a {
-  font-size: 14px;
-  color: #1e1e1e;
+.notice_one_line .notice_label {
+  font-size: 17px;
+  font-weight: bold;
+  color: #111;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
-.notice_area .notice_list li a:hover {
-  text-decoration: underline;
-  color: #1dcd9f;
+.notice_one_line .notice_text {
+  font-size: 15px;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 900px;
+  display: block;
 }
 
 /*푸터*/
-.site_footer {
-  background-color: #f5f5f5;
-  padding: 40px 0;
-  font-size: 13px;
-  color: #666666;
+.footer {
+  background: #fff;
+  color: #222;
+  font-size: 14px;
+  padding-top: 32px;
+  border-top: 1px solid #eee;
 }
-.site_footer .footer_top {
-  margin-bottom: 20px;
-}
-.site_footer .footer_top .footer_menu {
+.footer .footer_top {
+  max-width: 1060px;
+  margin: 0 auto;
   display: flex;
-  gap: 20px;
+  gap: 48px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid #eee;
+  justify-content: space-between;
 }
-.site_footer .footer_top .footer_menu li a {
-  color: #666666;
+.footer .footer_cs {
+  flex: 0 0 250px;
 }
-.site_footer .footer_top .footer_menu li a:hover {
-  color: #1e1e1e;
+.footer .footer_cs .cs_title {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.footer .footer_cs .cs_phone {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.footer .footer_cs .cs_info {
+  margin-bottom: 4px;
+  color: #666;
+}
+.footer .footer_cs .cs_info span {
+  color: #888;
+  margin-left: 4px;
+}
+.footer .footer_cs .cs_btns {
+  margin-top: 14px;
+  display: flex;
+  gap: 8px;
+}
+.footer .footer_cs .cs_btns button {
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 6px 18px;
+  color: #444;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.footer .footer_cs .cs_btns button:hover {
+  background: #e4e4e4;
+}
+.footer .footer_link_group {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 40px;
+  justify-content: flex-end;
+}
+.footer .footer_col .footer_col_title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111;
+}
+.footer .footer_col ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer .footer_col li {
+  margin-bottom: 4px;
+}
+.footer .footer_col li a {
+  color: #444;
+  text-decoration: none;
+  font-size: 14px;
+}
+.footer .footer_col li a:hover {
   text-decoration: underline;
 }
-.site_footer .footer_info {
-  line-height: 1.6;
+.footer .footer_bottom {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 26px 0 18px 0;
 }
-.site_footer .footer_info p {
-  margin-bottom: 10px;
+.footer .footer_policy {
+  display: flex;
+  gap: 18px;
+  font-size: 15px;
+  margin-bottom: 20px;
 }
-.site_footer .footer_info .copyright {
-  font-size: 12px;
+.footer .footer_policy a {
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer .footer_policy a:hover {
+  text-decoration: underline;
+  color: #3db668;
+}
+.footer .footer_logo_info {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+.footer .footer_logo_info .footer_logo img {
+  width: 110px;
+  margin-bottom: 6px;
+}
+.footer .footer_logo_info .footer_corp_info {
+  color: #888;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.footer .footer_logo_info .footer_corp_info a {
+  color: #229760;
+  font-weight: 500;
+  text-decoration: underline;
+}
+.footer .footer_logo_info .footer_corp_info span {
+  display: inline-block;
+  margin-right: 8px;
+}
+.footer .footer_copyright {
   color: #999;
-}
-.site_footer .footer_logo {
-  margin-top: 20px;
-  text-align: right;
-}
-.site_footer .footer_logo img {
-  height: 40px;
+  font-size: 13px;
+  margin-top: 10px;
+  letter-spacing: 0.1em;
 }
