@@ -8,6 +8,9 @@ async function fetchBookByTitle(title) {
   return data.documents[0];
 }
 
+
+
+
 // 오늘의 책
 function renderTodaysBook(book) {
   const container = document.querySelector('.todays_book .book_list');
@@ -40,6 +43,10 @@ todaysTitles.forEach(title => {
 });
 
 
+
+
+
+
 // md 도서
 function renderMdBook(book) {
   const container = document.querySelector('.md_recommend .book_list');
@@ -70,6 +77,10 @@ mdRecommendTitles.forEach(title => {
     else console.warn(`❌ [검색 실패] "${title}"`);
   });
 });
+
+
+
+
 
 // 베스트셀러
 const weeklyTitles = [
@@ -159,6 +170,10 @@ document.querySelector('.weekly_best .btn-prev').addEventListener('click', () =>
 
 fetchWeeklyBooks();
 
+
+
+
+
 // 급상승 도서
 const rankBookTitles = [
   "단다단 16",
@@ -228,6 +243,9 @@ Promise.all(
   renderPage();
 });
 
+
+
+
 // 핫북
 const hotBookTitles = [
   "엄마 당신의 이야기를 들려주세요(당신의 이야기를 들려주세요)",
@@ -290,6 +308,9 @@ Promise.all(hotBookTitles.map(title => fetchBookByTitle(title)))
     hotBooks = results.filter(book => book);
     renderHotPage();
   });
+
+
+
 
 
 // 이런책 어떠세요 동작 파트
@@ -371,6 +392,9 @@ async function bookDataMd() {
 }
 
 bookDataMd();
+
+
+
 
 // 좋은 평가
 

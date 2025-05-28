@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영풍문고</title>
+
+    <link rel="stylesheet" href="./css/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@1.4.1/src/css/ph.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+    <div class="wrap">
+
+    <!-- 상단 유틸 메뉴 -->
+    <div class="header_top">
+      <div class="top_util">
+        <ul class="top_util_left">
+          <li><a href="#">매장안내</a></li>
+          <li><a href="#">혜택안내</a></li>
+          <li><a href="#">나우드림</a></li>
+        </ul>
+        <ul class="top_util_right">
+          <li><a href="#">로그인</a></li>
+          <li><a href="#">장바구니</a></li>
+          <li><a href="#">주문/배송</a></li>
+          <li><a href="#">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 로고 + 검색 + 광고 -->
+    <div class="header_middle">
+      <div class="inner">
+        <h1 class="logo"><a href="#"><img src="./img/yp_logo.png" alt="영풍문고"></a></h1>
+        <div class="search_wrap">
+          <div class="search_input">
+            <input type="text" placeholder="쇼펜하우어 인생수업, 10만부 판매 기념 리커버!">
+            <button class="btn_search"></button>
+          </div>
+          <div class="search_keywords">
+            <a href="#">한강 &lt;빛과 실&gt;</a>
+            <a href="#">유시민 청춘의 독서</a>
+            <a href="#">기욤뮈소 평등</a>
+            <a href="#">김영하 신간</a>
+            <a href="#">프란치스코 교황</a>
+          </div>
+        </div>
+        <div class="ad_banner">
+          <a href="#"><img src="" alt="더 퀸 테일러 스위프트 광고"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- GNB 메뉴 -->
+    <div class="header_navigation">
+      <div class="inner">
+        <ul class="gnb_left">
+          <li class="has-dropdown">
+            <a href="#">전체 카테고리</a>
+          </li>
+          <li><a href="#">베스트</a></li>
+          <li><a href="#">신상품</a></li>
+          <li><a href="#">추천</a></li>
+          <li><a href="#">기프티콘</a></li>
+          <li><a href="#">컬쳐페이지</a></li>
+        </ul>
+
+        <ul class="gnb_right">
+          <li><a href="#">혜택</a></li>
+          <li><a href="#">사은품</a></li>
+          <li><a href="#">문학행사</a></li>
+          <li><a href="#">이벤트</a></li>
+          <li><a href="#">출석체크</a></li>
+        </ul>
+      </div>
+
+
+      <!-- 드롭다운 메뉴 -->
+      <div class="gnb_dropdown">
+        <div class="dropdown_inner">
+          <div class="dropdown_left">
+            <ul>
+              <li><a href="#">국내도서</a></li>
+              <li><a href="#">외국도서</a></li>
+              <li><a href="#">영풍문고 매장</a></li>
+            </ul>
+          </div>
+          <div class="dropdown_right">
+            <ul>
+              <li><a href="#">소설/에세이</a></li>
+              <li><a href="#">유아/어린이/초등학습</a></li>
+              <li><a href="#">인문/역사</a></li>
+              <li><a href="#">예술</a></li>
+              <li><a href="#">종교</a></li>
+              <li><a href="#">경제/경영</a></li>
+              <li><a href="#">정치/사회</a></li>
+              <li><a href="#">수험서/자격증</a></li>
+              <li><a href="#">사전</a></li>
+              <li><a href="#">자녀교육/건강/여행/요리</a></li>
+              <li><a href="#">중/고학습</a></li>
+              <li><a href="#">외국어</a></li>
+              <li><a href="#">컴퓨터/IT</a></li>
+              <li><a href="#">기술/공학</a></li>
+              <li><a href="#">자연/과학</a></li>
+              <li><a href="#">의학</a></li>
+              <li><a href="#">잡지</a></li>
+            </ul>
+          </div>
+          <div class="dropdown_banner">
+            <a href="#"><img src="./img/gnb_banner.jpg" alt="배너"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 공지사항 -->
+<div class="notice_one_line_wrap">
+  <div class="notice_one_line">
+    <span class="notice_label">공지사항</span>
+    <span class="notice_text" id="noticeRolling">[공지] 개인정보 처리방침 개정 안내 (2024.06.01)</span>
+  </div>
+</div>
+
+
+    <!-- 푸터 -->
+<footer class="footer">
+  <div class="footer_top">
+    <div class="footer_cs">
+      <div class="cs_title">고객센터</div>
+      <div class="cs_phone">1544-9020</div>
+      <div class="cs_info">
+        상담가능시간 <span>평일 09:00 ~ 18:00 / 점심시간 12:15 ~ 13:15</span>
+      </div>
+      <div class="cs_info">
+        대표 메일 <span>customer@ypbooks.co.kr</span>
+      </div>
+      <div class="cs_info">
+        대량 주문 <span>webmaster@ypbooks.co.kr</span>
+      </div>
+      <div class="cs_btns">
+        <button>FAQ</button>
+        <button>1:1고객상담</button>
+        <button>입점문의</button>
+      </div>
+    </div>
+    <div class="footer_link_group">
+      <div class="footer_col">
+        <div class="footer_col_title">영풍문고</div>
+        <ul>
+          <li><a href="#">회사소개</a></li>
+          <li><a href="#">전국지점 안내</a></li>
+          <li><a href="#">나우드림</a></li>
+        </ul>
+      </div>
+      <div class="footer_col">
+        <div class="footer_col_title">비즈니스</div>
+        <ul>
+          <li><a href="#">입점문의</a></li>
+          <li><a href="#">광고안내</a></li>
+          <li><a href="#" style="color:#229760;">출판사통합관리 SCM</a></li>
+        </ul>
+      </div>
+      <div class="footer_col">
+        <div class="footer_col_title">쇼핑도우미</div>
+        <ul>
+          <li><a href="#">도서검색</a></li>
+          <li><a href="#">회원등급 혜택</a></li>
+          <li><a href="#">주문/배송</a></li>
+          <li><a href="#">취소/교환/환불</a></li>
+          <li><a href="#">적립금 사용</a></li>
+          <li><a href="#">교환권 사용</a></li>
+          <li><a href="#">청약 철회</a></li>
+        </ul>
+      </div>
+      <div class="footer_col">
+        <div class="footer_col_title">고객센터</div>
+        <ul>
+          <li><a href="#">1:1 고객상담</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">공지사항</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer_bottom">
+    <div class="footer_policy">
+      <a href="#">이용약관</a>
+      <a href="#">개인정보처리방침</a>
+      <a href="#">영상정보관리방침</a>
+      <a href="#">청소년보호정책</a>
+      <a href="#">이메일 무단 수집거부</a>
+    </div>
+    <div class="footer_logo_info">
+      <div class="footer_logo">
+        <img src="./img/yp_logo.png" alt="영풍문고">
+      </div>
+      <div class="footer_corp_info">
+        <span>(주) 영풍문고</span>
+        <span>주소 서울특별시 강남구 강남대로 542(논현동, 영풍빌딩) (우)06110</span>
+        <span>대표이사 김정환</span><br>
+        <span>사업자 등록번호 773-86-01800 <a href="#">사업자정보확인</a></span>
+        <span>통신판매업등록번호 2024-서울강남-06241</span>
+        <span>개인정보관리 책임자 조수현</span>
+      </div>
+    </div>
+    <div class="footer_copyright">
+      COPYRIGHT ⓒ YOUNGPOONG BOOKSTORE INC. ALL RIGHTS RESERVED.
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="./js/main.js"></script>
+</body>
+</html>
