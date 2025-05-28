@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>영풍문고</title>
 
+    <link rel="stylesheet" href="./css/subpage.css">
     <link rel="stylesheet" href="./css/common.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@1.4.1/src/css/ph.min.css">
@@ -115,6 +116,62 @@
       </div>
     </div>
 
+
+<!-- 메인 책 상세 영역 -->
+<!-- 서브페이지 메인 컨테이너 -->
+<div class="detail_main_wrap">
+  <div class="detail_inner">
+    <!-- 책 이미지 (좌측) -->
+    <div class="detail_thumb">
+      <img id="detail_cover" src="" alt="책표지">
+    </div>
+    <!-- 책 정보 (우측) -->
+    <div class="detail_info">
+      <h1 id="detail_title"></h1>
+      <div class="detail_author">
+        <span id="detail_authors"></span> | <span id="detail_publisher"></span>
+      </div>
+      <div class="detail_pubdate" id="detail_pubdate"></div>
+      <div class="detail_review">
+        <span class="star">⭐ 0 리뷰 0개</span>
+      </div>
+      <div class="detail_price">
+        <span id="detail_saleprice"></span>
+        <del id="detail_price"></del>
+        <span class="discount" id="detail_discount"></span>
+      </div>
+      <div class="detail_benefit">
+        <span>적립금 <b id="detail_point"></b>원 (5%)</span>
+        <span>무이자 할부 · 결제혜택 · 쿠폰</span>
+      </div>
+      <div class="detail_ship">
+        <span>배송비 무료</span>
+        <span>서울특별시 강남구 강남대로 542(논현동, 영풍빌딩)</span>
+      </div>
+      <div class="detail_qty_wrap">
+        <button class="qty_btn" id="qty_minus">-</button>
+        <input type="text" id="detail_qty" value="1" readonly>
+        <button class="qty_btn" id="qty_plus">+</button>
+        <span class="detail_sum"><span id="detail_sum"></span>원</span>
+      </div>
+      <div class="detail_btns">
+        <button class="btn_cart">장바구니</button>
+        <button class="btn_buy">바로구매</button>
+        <button class="btn_pickup">나우드림</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
     <!-- 공지사항 -->
 <div class="notice_one_line_wrap">
   <div class="notice_one_line">
@@ -212,7 +269,7 @@
 </footer>
 
 
-
+<script src="./js/sub_api.js"></script>
 <script src="./js/main.js"></script>
 </body>
 </html>

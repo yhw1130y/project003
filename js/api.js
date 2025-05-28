@@ -11,12 +11,60 @@ async function fetchBookByTitle(title) {
 
 
 
-// 오늘의 책
-function renderTodaysBook(book) {
+// // 오늘의 책
+// function renderTodaysBook(book) {
+//   const container = document.querySelector('.todays_book .book_list');
+//   const item = document.createElement('li');
+//   item.innerHTML = `
+//     <a href="${book.url}" target="_blank">
+//       <img src="${book.thumbnail}" alt="${book.title}">
+//       <div class="book_info">
+//         <strong class="book_title">${book.title}</strong>
+//         <span class="book_author">${book.authors.join(', ')}</span>
+//       </div>
+//     </a>
+//   `;
+//   container.appendChild(item);
+// }
+
+// const todaysTitles = [
+//   "우리의 낙원에서 만나자 - 이 계절을 함께 건너는 당신에게",
+//   "새벽 탐험 - 슷카이 그림책",
+//   "바움가트너",
+//   "더 퍼스트 - 돈과 시간을 장악하는 1% 부의 법칙",
+//   "클래식 왜 안 좋아하세요? - 아는 만큼 들리는 나의 첫 클래식 수업"
+// ];
+
+// todaysTitles.forEach(title => {
+//   fetchBookByTitle(title).then(book => {
+//     if (book) renderTodaysBook(book);
+//     else console.warn(`❌ [검색 실패] "${title}"`);
+//   });
+// });
+
+// 오늘의 책 하나 렌더링
+function renderTodaysBook(book, idx) {
   const container = document.querySelector('.todays_book .book_list');
   const item = document.createElement('li');
+
+  // ⬇⬇⬇ 여기서 링크/target 구분!
+  // idx === 3  → 4번째 카드(0,1,2,3 순서!)
+  // 이 카드만 내 사이트 서브페이지로 연결함
+  let link, target;
+  if (idx === 3) { 
+    // ⭐️ 4번째 카드 → 서브페이지로 이동 (내부 링크)
+    link = `subpage.html?book=${encodeURIComponent(book.title)}`;
+    target = "_self"; // 같은 창에서 열기
+  } else {
+    // ⭐️ 나머지 카드는 기존처럼 외부 링크
+    link = book.url;
+    target = "_blank"; // 새 창에서 열기
+  }
+  // ⬆⬆⬆
+
+  // 아래에 a태그에 위에서 만든 link/target 적용!
   item.innerHTML = `
-    <a href="${book.url}" target="_blank">
+    <a href="${link}" target="${target}">
       <img src="${book.thumbnail}" alt="${book.title}">
       <div class="book_info">
         <strong class="book_title">${book.title}</strong>
@@ -27,17 +75,19 @@ function renderTodaysBook(book) {
   container.appendChild(item);
 }
 
+// 오늘의 책 목록
 const todaysTitles = [
   "우리의 낙원에서 만나자 - 이 계절을 함께 건너는 당신에게",
   "새벽 탐험 - 슷카이 그림책",
   "바움가트너",
-  "더 퍼스트 - 돈과 시간을 장악하는 1% 부의 법칙",
+  "더 퍼스트 - 돈과 시간을 장악하는 1% 부의 법칙", // 4번째(인덱스 3)
   "클래식 왜 안 좋아하세요? - 아는 만큼 들리는 나의 첫 클래식 수업"
 ];
 
-todaysTitles.forEach(title => {
+// idx(순서)까지 함께 넘겨줌!
+todaysTitles.forEach((title, idx) => {
   fetchBookByTitle(title).then(book => {
-    if (book) renderTodaysBook(book);
+    if (book) renderTodaysBook(book, idx); // idx 여기!
     else console.warn(`❌ [검색 실패] "${title}"`);
   });
 });

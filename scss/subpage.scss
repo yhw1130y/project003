@@ -1,0 +1,61 @@
+.detail_main_wrap {
+  background: #fff;
+  min-height: 100vh;
+  .detail_inner {
+    max-width: 1060px;
+    margin: 40px auto 0;
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+  }
+  .detail_thumb {
+    flex: none;
+    width: 400px; min-width: 400px;
+    img {
+      display: block;
+      width: 400px; height: 600px;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background: #eee;
+    }
+  }
+  .detail_info {
+    flex: 1;
+    h1 {
+      font-size: 2rem; font-weight: bold; margin: 0 0 12px;
+    }
+    .detail_author {
+      color: #666; margin-bottom: 4px; font-size: 16px;
+    }
+    .detail_pubdate { color: #888; font-size: 15px; margin-bottom: 12px;}
+    .detail_review { font-size: 14px; color: #f90; margin-bottom: 18px;}
+    .detail_price {
+      font-size: 2rem; color: #d32f2f; font-weight: 700;
+      span, del { font-size: 1.1rem; color: #888; margin-left: 10px;}
+      .discount { color: #21b87a; font-size: 1rem;}
+    }
+    .detail_benefit {
+      font-size: 15px; background: #f7faf7; padding: 10px 15px; border-radius: 6px; margin: 16px 0;
+      span { display: block; color: #444; margin-bottom: 2px;}
+      b { color: #d32f2f;}
+    }
+    .detail_ship {
+      font-size: 15px; color: #555; margin-bottom: 20px;
+      span {display:block;}
+    }
+    .detail_qty_wrap {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 22px;
+      .qty_btn { width: 28px; height: 28px; border: 1px solid #ccc; background: #f7f7f7; border-radius: 4px;}
+      input { width: 34px; text-align: center; font-size: 16px; border: 1px solid #eee; border-radius: 3px;}
+      .detail_sum { margin-left: 14px; font-weight: 700; color: #d32f2f;}
+    }
+    .detail_btns {
+      display: flex; gap: 16px;
+      button {font-size: 17px; font-weight: bold; border-radius: 6px; padding: 0 28px; height: 48px; border: none;}
+      .btn_cart { background: #fff; border: 2px solid #d0d0d0; color: #555;}
+      .btn_buy { background: #21b87a; color: #fff;}
+      .btn_pickup { background: #ffebef; color: #d32f2f;}
+    }
+  }
+}
