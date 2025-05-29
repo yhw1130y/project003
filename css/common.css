@@ -129,7 +129,7 @@ button {
 /*네비바*/
 .header_navigation {
   position: relative;
-  background-color: #d9bc8a;
+  background-color: #4ec08d;
 }
 .header_navigation .inner, .header_navigation .header_top .top_util, .header_top .header_navigation .top_util {
   display: flex;

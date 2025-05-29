@@ -1,35 +1,31 @@
-const query = "우리의 낙원에서 만나자"; // ← 실제는 URL파라미터 등에서 동적으로!
-fetch(`https://dapi.kakao.com/v3/search/book?target=title&query=${encodeURIComponent(query)}&size=1`, {
-  headers: { Authorization: "KakaoAK 7dc8a40298c87972a469f758f14bd142" }
-})
-  .then(res => res.json())
-  .then(data => {
-    const book = data.documents[0];
-    document.getElementById("detail_cover").src = book.thumbnail || '';
-    document.getElementById("detail_title").textContent = book.title || '';
-    document.getElementById("detail_authors").textContent = book.authors?.join(', ') || '';
-    document.getElementById("detail_publisher").textContent = book.publisher || '';
-    document.getElementById("detail_pubdate").textContent = book.datetime?.slice(0, 10) || '';
-    document.getElementById("detail_price").textContent = book.price ? book.price.toLocaleString() + '원' : '';
-    document.getElementById("detail_saleprice").textContent = book.sale_price ? book.sale_price.toLocaleString() + '원' : '';
-    document.getElementById("detail_discount").textContent = book.price && book.sale_price ? (Math.round((1 - book.sale_price / book.price) * 100)) + "% 할인" : "";
-    document.getElementById("detail_point").textContent = book.sale_price ? Math.floor(book.sale_price * 0.05) : "0";
-    document.getElementById("detail_sum").textContent = book.sale_price ? book.sale_price.toLocaleString() : "0";
-  });
+const bookTitle = "우리의 낙원에서 만나자 - 이 계절을 함께 건너는 당신에게";
 
-// --- 수량 증가/감소 및 합계 업데이트 ---
-let qty = 1;
-document.getElementById("qty_minus").onclick = function() {
-  if(qty > 1) qty--;
-  document.getElementById("detail_qty").value = qty;
-  updateSum();
+async function fetchBookInfo(title) {
+  const res = await fetch(`https://dapi.kakao.com/v3/search/book?target=title&query=${encodeURIComponent(title)}`, {
+    headers: { Authorization: "KakaoAK 7dc8a40298c87972a469f758f14bd142" }
+  });
+  const data = await res.json();
+  return data.documents[0];
 }
-document.getElementById("qty_plus").onclick = function() {
-  qty++;
-  document.getElementById("detail_qty").value = qty;
-  updateSum();
+
+async function renderDetail() {
+  const data = await fetchBookInfo(bookTitle);
+  // 표지
+  document.querySelector('.book_thumb_img').src = data.thumbnail;
+  // 제목/저자/출판사/날짜
+  document.querySelector('.detail_title').textContent = data.title;
+  document.querySelector('.author').textContent = data.authors.join(', ');
+  document.querySelector('.publisher').textContent = data.publisher;
+  document.querySelector('.date').textContent = data.datetime.substring(0,10);
+  // 가격/할인/원가(임의값!)
+  document.querySelector('.price').textContent = data.sale_price.toLocaleString() + '원';
+  document.querySelector('.origin_price').textContent = data.price.toLocaleString() + '원';
+  document.querySelector('.discount').textContent = '10% 할인';
+  document.querySelector('.point').textContent = '적립금';
+  document.querySelector('.point_txt').textContent = Math.floor(data.sale_price * 0.05).toLocaleString() + '원 (5%)';
+  document.querySelector('.pay_method').textContent = '무이자 할부';
+  document.querySelector('.extra').textContent = '결제 혜택';
+  document.querySelector('.coupon').textContent = '쿠폰';
+  document.querySelector('.total_price').textContent = data.sale_price.toLocaleString() + '원';
 }
-function updateSum() {
-  const unit = +document.getElementById("detail_saleprice").textContent.replace(/[^0-9]/g,"");
-  document.getElementById("detail_sum").textContent = (unit * qty).toLocaleString();
-}
+renderDetail();
