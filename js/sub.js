@@ -9,28 +9,73 @@ document.querySelectorAll('.detail_nav_item').forEach(btn => {
 
 
 
-//도서 하단 시작
-// 도서정보 collapse toggle (접기/펼치기)
-document.querySelectorAll('.collapse-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const target = btn.dataset.target;
-    const contentBox = document.querySelector(`.collapse-box[data-box="${target}"]`);
-    const isCollapsed = contentBox.classList.toggle('collapsed');
-    if (isCollapsed) {
-      btn.innerHTML = '펼쳐보기 <span>▼</span>';
-    } else {
-      btn.innerHTML = '접어보기 <span>▲</span>';
-    }
-  });
-
-  // 시작 시, 책소개는 기본 펼침, 목차/서평은 접힘
-  const target = btn.dataset.target;
-  const contentBox = document.querySelector(`.collapse-box[data-box="${target}"]`);
-  if (target === 'intro') {
-    contentBox.classList.remove('collapsed');
-    btn.innerHTML = '접어보기 <span>▲</span>';
-  } else {
-    contentBox.classList.add('collapsed');
-    btn.innerHTML = '펼쳐보기 <span>▼</span>';
+//탭 컨텐츠 영역 (서브페이지 하단)
+// (접고 펼치기)
+document.addEventListener('DOMContentLoaded', function() {
+  function setupToggle(boxId, btnId) {
+    const box = document.getElementById(boxId);
+    const btn = document.getElementById(btnId);
+    btn.addEventListener('click', function() {
+      const isFold = box.classList.contains('fold');
+      if (isFold) {
+        box.classList.remove('fold');
+        box.classList.add('open');
+        btn.textContent = '접어보기 ▲';
+      } else {
+        box.classList.remove('open');
+        box.classList.add('fold');
+        btn.textContent = '펼쳐보기 ▼';
+      }
+    });
   }
+  setupToggle('descBox', 'descToggleBtn');      // 책소개
+  setupToggle('indexBox', 'indexToggleBtn');    // 목차
+  setupToggle('reviewBox', 'reviewToggleBtn');  // ★ 출판사 서평 추가!
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const stickyBox = document.querySelector('.purchase-sticky-box');
+  const aside = stickyBox.parentElement;
+  const container = document.querySelector('.product-main-wrap');
+
+  function updateSticky() {
+    const containerRect = container.getBoundingClientRect();
+    const boxHeight = stickyBox.offsetHeight;
+    const winTop = window.scrollY || window.pageYOffset;
+    const offsetTop = container.offsetTop;
+    const stickyTop = 32;
+
+    // 컨테이너의 상단보다 위에 있을 때: static
+    if (winTop + stickyTop < offsetTop) {
+      stickyBox.style.position = 'static';
+      stickyBox.style.top = '';
+      stickyBox.style.bottom = '';
+      stickyBox.style.left = '';
+      stickyBox.style.right = '';
+    }
+    // 컨테이너 안, 아래 닿기 전: fixed
+    else if (winTop + stickyTop + boxHeight < offsetTop + container.offsetHeight) {
+      stickyBox.style.position = 'fixed';
+      stickyBox.style.top = stickyTop + 'px';
+      stickyBox.style.bottom = '';
+      stickyBox.style.right = '';
+      // 💡 "left"를 1060px 컨텐츠 우측에 맞추기!
+      // 1. 컨테이너의 left 좌표 + 720px(컨텐츠) + 60px(마진)
+      const left = containerRect.left + 720 + 60;
+      stickyBox.style.left = left + 'px';
+      stickyBox.style.right = 'auto';
+    }
+    // 컨테이너 하단 부딪히면: absolute
+    else {
+      stickyBox.style.position = 'absolute';
+      stickyBox.style.top = 'auto';
+      stickyBox.style.bottom = '0';
+      stickyBox.style.left = '';
+      stickyBox.style.right = '';
+    }
+  }
+
+  window.addEventListener('scroll', updateSticky);
+  window.addEventListener('resize', updateSticky);
+  updateSticky();
 });
