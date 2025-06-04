@@ -204,10 +204,10 @@
     <!-- 탭 메뉴 영역 (서브페이지 하단) -->
     <div class="detail_nav_wrap">
       <nav class="detail_nav">
-        <button class="detail_nav_item active">도서정보</button>
-        <button class="detail_nav_item">리뷰</button>
-        <button class="detail_nav_item">추천</button>
-        <button class="detail_nav_item">교환/반품/환불</button>
+        <button class="detail_nav_item active" data-target="section-info">도서정보</button>
+        <button class="detail_nav_item" data-target="section-review">리뷰</button>
+        <button class="detail_nav_item" data-target="section-recommend">추천</button>
+        <button class="detail_nav_item" data-target="section-exchange">교환/반품/환불</button>
       </nav>
     </div>
 
@@ -359,6 +359,8 @@
       </div>
 
 
+
+
       <aside class="product-purchase-side">
         <div class="purchase-sticky-box">
           <img id="bookImg" src="https://image.yes24.com/goods/131303097/XL" alt="책표지">
@@ -391,7 +393,64 @@
       </aside>
     </div>
 
-  
+
+    <div class="product-main-wrap">
+      <section id="section-review" class="review-section">
+        <div class="review-section-head">
+          <h2 class="review-title">도서리뷰 <span class="review-count">(0)</span></h2>
+          <button type="button" class="review-write-btn">리뷰쓰기</button>
+        </div>
+        <p class="review-section-desc">
+          이 책을 읽고 어떤 느낌을 받으셨나요? 리뷰를 남기고 다른 독자들과 함께 공유해보세요.
+        </p>
+        <div class="review-none-box">
+          <div class="review-none-text">등록된 리뷰가 없습니다</div>
+          <a href="#" class="review-none-link">첫번째 리뷰어가 되어주세요</a>
+        </div>
+      </section>
+    </div>
+
+     <div class="product-main-wrap">
+    <div class="recommend-section" id="recommendSection">
+  <h2 class="recommend-title">이 분야에서 요즘 뜨는 책</h2>
+  <div class="recommend-slider">
+    <button class="slider-btn prev">&lt;</button>
+    <div class="slider-track-wrap">
+      <div class="slider-viewport">
+      <div class="slider-track" id="sliderTrack">
+      </div>
+      </div>
+    </div>
+    <button class="slider-btn next">&gt;</button>
+    <div class="slider-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</div>
+    </div>
+
+    <div class="product-main-wrap">
+    <div class="recommend-section2" id="recommendSection2">
+  <h2 class="recommend-title2">소설/에세이/시 분야 베스트✨셀러</h2>
+  <div class="recommend-slider2">
+    <button class="slider-btn prev2">&lt;</button>
+    <div class="slider-track-wrap2">
+      <div class="slider-viewport2">
+      <div class="slider-track2" id="sliderTrack2">
+      </div>
+      </div>
+    </div>
+    <button class="slider-btn next2">&gt;</button>
+    <div class="slider-dots2">
+      <span class="dot active2"></span>
+      <span class="dot2"></span>
+    </div>
+  </div>
+</div>
+    </div>
+
+
 
 
 

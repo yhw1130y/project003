@@ -46,88 +46,89 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-const books = [
-  {
-    img: "https://image.yes24.com/goods/131034786/XL",
-    title: "우리의 계절에 슬픔은 필요 없어",
-    meta: "김혜진 | 좋은북스"
-  },
-  {
-    img: "https://image.yes24.com/goods/130744545/XL",
-    title: "격이 다른 마흔의 사소한 습관",
-    meta: "클로이 | 팀앤와이드"
-  },
-  {
-    img: "https://image.yes24.com/goods/129924185/XL",
-    title: "ETS 토익 정기시험 기출문제집 4 LC",
-    meta: "ETS | 와이비엠"
-  },
-  {
-    img: "https://image.yes24.com/goods/129924188/XL",
-    title: "ETS 토익 정기시험 기출문제집 4 RC",
-    meta: "ETS | 와이비엠"
-  },
-  // --- 4개 더 복사해서 8개 만들기 ---
-  {
-    img: "https://image.yes24.com/goods/131034786/XL",
-    title: "우리의 계절에 슬픔은 필요 없어2",
-    meta: "김혜진 | 좋은북스"
-  },
-  {
-    img: "https://image.yes24.com/goods/130744545/XL",
-    title: "격이 다른 마흔의 사소한 습관2",
-    meta: "클로이 | 팀앤와이드"
-  },
-  {
-    img: "https://image.yes24.com/goods/129924185/XL",
-    title: "ETS 토익 정기시험 기출문제집 4 LC2",
-    meta: "ETS | 와이비엠"
-  },
-  {
-    img: "https://image.yes24.com/goods/129924188/XL",
-    title: "ETS 토익 정기시험 기출문제집 4 RC2",
-    meta: "ETS | 와이비엠"
-  },
+
+// 이분야 뜨는책
+
+const bookTitles = [
+  "치유의 빛", "고래눈이 내리다", "내게 남은 스물다섯 번의 계절", "나태주의 풀꽃 인생수업",
+  "내 꿈에 가끔만 놀러와", "파과", "어른의 관계에는 마침표가 없다", "첫 여름 완주"
 ];
+const PAGE_SIZE = 4;
+let page = 0;
 
 const sliderTrack = document.getElementById('sliderTrack');
+const dots = document.querySelectorAll('.slider-dots .dot');
+const prevBtn = document.querySelector('.slider-btn.prev');
+const nextBtn = document.querySelector('.slider-btn.next');
 
-// 카드 동적 생성
-books.forEach(book => {
-  const card = document.createElement('div');
-  card.className = 'related-book-card';
-  card.innerHTML = `
-    <img src="${book.img}" alt="${book.title}">
-    <div class="related-book-info">
-      <div class="related-book-title">${book.title}</div>
-      <div class="related-book-meta">${book.meta}</div>
-    </div>
-  `;
-  sliderTrack.appendChild(card);
-});
+const KAKAO_API_KEY = '7dc8a40298c87972a469f758f14bd142'; // 본인 키로 바꿔!
 
-// 슬라이드 로직
-let currentPage = 0;
-const pageSize = 4;
-const totalPages = Math.ceil(books.length / pageSize);
-
-function updateSlider() {
-  sliderTrack.style.transform = `translateX(-${currentPage * 100}%)`;
+async function fetchBookInfo(title) {
+  const url = `https://dapi.kakao.com/v3/search/book?target=title&query=${encodeURIComponent(title)}&size=1`;
+  const res = await fetch(url, {
+    headers: { Authorization: `KakaoAK ${KAKAO_API_KEY}` }
+  });
+  const data = await res.json();
+  if (data.documents && data.documents.length) {
+    const book = data.documents[0];
+    return {
+      title: book.title,
+      thumbnail: book.thumbnail || 'https://via.placeholder.com/140x196?text=No+Image',
+      authors: book.authors.join(", "),
+      publisher: book.publisher
+    }
+  } else {
+    // fallback
+    return {
+      title, thumbnail: 'https://via.placeholder.com/140x196?text=No+Image', authors: '', publisher: ''
+    }
+  }
 }
 
-document.getElementById('slidePrevBtn').onclick = function() {
-  if (currentPage > 0) {
-    currentPage--;
-    updateSlider();
+async function loadBooks() {
+  const books = [];
+  for (const title of bookTitles) {
+    books.push(await fetchBookInfo(title));
   }
-};
+  return books;
+}
 
-document.getElementById('slideNextBtn').onclick = function() {
-  if (currentPage < totalPages - 1) {
-    currentPage++;
-    updateSlider();
+function renderSlider(books, page) {
+  sliderTrack.innerHTML = '';
+  for (let i = 0; i < PAGE_SIZE; i++) {
+    const idx = page * PAGE_SIZE + i;
+    if (books[idx]) {
+      sliderTrack.innerHTML += `
+        <div class="related-book-card">
+          <img src="${books[idx].thumbnail}" alt="${books[idx].title}">
+          <div class="related-book-title">${books[idx].title}</div>
+          <div class="related-book-meta">${books[idx].authors} | ${books[idx].publisher}</div>
+        </div>
+      `;
+    }
   }
-};
+  dots.forEach((dot, idx) => dot.classList.toggle('active', idx === page));
+}
 
-// 초기화
-updateSlider();
+loadBooks().then(books => {
+  renderSlider(books, page);
+
+  prevBtn.onclick = () => {
+    if (page > 0) {
+      page--;
+      renderSlider(books, page);
+    }
+  };
+  nextBtn.onclick = () => {
+    if (page < Math.ceil(books.length / PAGE_SIZE) - 1) {
+      page++;
+      renderSlider(books, page);
+    }
+  };
+  dots.forEach((dot, idx) => {
+    dot.onclick = () => {
+      page = idx;
+      renderSlider(books, page);
+    }
+  });
+});

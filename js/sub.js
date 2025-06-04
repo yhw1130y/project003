@@ -79,3 +79,22 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('resize', updateSticky);
   updateSticky();
 });
+
+
+// 하단 카테고리
+document.querySelectorAll('.detail_nav_item').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const targetId = btn.dataset.target;
+    const targetEl = document.getElementById(targetId);
+
+    if (targetEl) {
+      const navHeight = document.querySelector('.detail_nav_wrap').offsetHeight;
+      // 스티키 네비 높이만큼 보정 (탑바가 섹션 가리지 않게!)
+      const top = targetEl.getBoundingClientRect().top + window.scrollY - navHeight;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+    // 탭 active 스타일 처리
+    document.querySelectorAll('.detail_nav_item').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
