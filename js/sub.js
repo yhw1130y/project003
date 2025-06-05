@@ -51,3 +51,30 @@ document.querySelectorAll('.detail_nav_item').forEach(btn => {
     btn.classList.add('active');
   });
 });
+
+const OFFSET = 7; // 보통 네비+조금 더 보정 (네비+10~30px 정도가 가장 자연스러움)
+const sectionIds = [
+  "section-info",
+  "section-review",
+  "section-recommend",
+  "section-exchange"
+];
+const navItems = document.querySelectorAll('.detail_nav_item');
+
+window.addEventListener('scroll', function() {
+  let scrollY = window.pageYOffset;
+  let currentIdx = 0;
+  let navHeight = document.querySelector('.detail_nav_wrap')?.offsetHeight || 0;
+
+  sectionIds.forEach((id, idx) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const sectionTop = el.getBoundingClientRect().top + window.pageYOffset - navHeight - OFFSET;
+    if (scrollY >= sectionTop) currentIdx = idx;
+  });
+
+  navItems.forEach((btn, idx) => {
+    if (idx === currentIdx) btn.classList.add('active');
+    else btn.classList.remove('active');
+  });
+});
