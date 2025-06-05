@@ -33,53 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
   setupToggle('reviewBox', 'reviewToggleBtn');  // ★ 출판사 서평 추가!
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  const stickyBox = document.querySelector('.purchase-sticky-box');
-  const aside = stickyBox.parentElement;
-  const container = document.querySelector('.product-main-wrap');
-
-  function updateSticky() {
-    const containerRect = container.getBoundingClientRect();
-    const boxHeight = stickyBox.offsetHeight;
-    const winTop = window.scrollY || window.pageYOffset;
-    const offsetTop = container.offsetTop;
-    const stickyTop = 32;
-
-    // 컨테이너의 상단보다 위에 있을 때: static
-    if (winTop + stickyTop < offsetTop) {
-      stickyBox.style.position = 'static';
-      stickyBox.style.top = '';
-      stickyBox.style.bottom = '';
-      stickyBox.style.left = '';
-      stickyBox.style.right = '';
-    }
-    // 컨테이너 안, 아래 닿기 전: fixed
-    else if (winTop + stickyTop + boxHeight < offsetTop + container.offsetHeight) {
-      stickyBox.style.position = 'fixed';
-      stickyBox.style.top = stickyTop + 'px';
-      stickyBox.style.bottom = '';
-      stickyBox.style.right = '';
-      // 💡 "left"를 1060px 컨텐츠 우측에 맞추기!
-      // 1. 컨테이너의 left 좌표 + 720px(컨텐츠) + 60px(마진)
-      const left = containerRect.left + 720 + 60;
-      stickyBox.style.left = left + 'px';
-      stickyBox.style.right = 'auto';
-    }
-    // 컨테이너 하단 부딪히면: absolute
-    else {
-      stickyBox.style.position = 'absolute';
-      stickyBox.style.top = 'auto';
-      stickyBox.style.bottom = '0';
-      stickyBox.style.left = '';
-      stickyBox.style.right = '';
-    }
-  }
-
-  window.addEventListener('scroll', updateSticky);
-  window.addEventListener('resize', updateSticky);
-  updateSticky();
-});
-
 
 // 하단 카테고리
 document.querySelectorAll('.detail_nav_item').forEach(btn => {

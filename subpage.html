@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>영풍문고-우리의 낙원에서 만나자</title>
 
-  <link rel="stylesheet" href="./css/subpage.css">
   <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/subpage.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@1.4.1/src/css/ph.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -51,7 +51,7 @@
           </div>
         </div>
         <div class="ad_banner">
-          <a href="#"><img src="" alt="더 퀸 테일러 스위프트 광고"></a>
+          <a href="#"></a>
         </div>
       </div>
     </div>
@@ -112,7 +112,7 @@
             </ul>
           </div>
           <div class="dropdown_banner">
-            <a href="#"><img src="./img/gnb_banner.jpg" alt="배너"></a>
+            <a href="#"></a>
           </div>
         </div>
       </div>
@@ -214,7 +214,7 @@
 
     <!--탭 컨텐츠 영역 (서브페이지 하단)-->
     <div class="product-main-wrap">
-      <div class="product-main-content">
+      <div class="product-main-content" id="section-info">
         <!-- 상품 규격 정보 -->
         <h2 class="book-detail-title">상품 규격 정보</h2>
         <table class="spec-table">
@@ -356,12 +356,164 @@
           </div>
         </div>
         <hr>
+      <!-- </div> -->
+
+
+
+
+      <!-- <aside class="product-purchase-side">
+        <div class="purchase-sticky-box">
+          <img id="bookImg" src="https://image.yes24.com/goods/131303097/XL" alt="책표지">
+          <div class="book-info-wrap">
+            <div class="book-title" id="bookTitle">우리의 낙원에서 만나자 - 이 계절을 함께 건너는 당신에게</div>
+            <div class="book-author" id="bookAuthor">하태완 저 | 북로망스</div>
+          </div>
+          <div class="order-row">
+            <button class="btn-minus" id="btnMinus">-</button>
+            <span class="order-qty" id="orderQty">1</span>
+            <button class="btn-plus" id="btnPlus">+</button>
+            <span class="book-price" id="bookPrice">17,550</span>
+            <span class="book-currency">원</span>
+          </div>
+          <div class="notice">실결제 금액은 적립금, 쿠폰 등에 따라 달라질 수 있습니다.</div>
+          <button class="order-btn cart">장바구니</button>
+          <button class="order-btn buy">바로구매</button>
+          <button class="order-btn nowdream">나우드림</button>
+          <div class="npay-wrap">
+            <span class="npay-label">NAVER</span>
+            <span class="npay-paybtn">N pay 구매</span>
+            <span class="npay-wish">찜</span>
+            <div class="npay-desc">구매적립 네이버페이포인트 최소 5...</div>
+          </div>
+          <div class="benefit-box">
+            <span>회원 가입 <span class="red">즉시 지급되는 적립금</span> 과 <br>등급별 다양한 <span class="red">회원 혜택</span> 보기</span>
+            <span class="arrow">→</span>
+          </div>
+        </div>
+      </aside> -->
+    <!-- </div> -->
+
+
+    <div class="product-main-wrap">
+      <section id="section-review" class="review-section">
+        <div class="review-section-head">
+          <h2 class="review-title">도서리뷰 <span class="review-count">(0)</span></h2>
+          <button type="button" class="review-write-btn">리뷰쓰기</button>
+        </div>
+        <p class="review-section-desc">
+          이 책을 읽고 어떤 느낌을 받으셨나요? 리뷰를 남기고 다른 독자들과 함께 공유해보세요.
+        </p>
+        <div class="review-none-box">
+          <div class="review-none-text">등록된 리뷰가 없습니다</div>
+          <a href="#" class="review-none-link">첫번째 리뷰어가 되어주세요</a>
+        </div>
+      </section>
+    </div>
+
+
+    <!--책 추천-->
+    <div class="product-main-wrap">
+      <!-- <div class="product-main-content"> -->
+        <!-- ...(상품 규격, 이벤트 등 기존 내용)... -->
+
+        <!-- 슬라이드1: 이 분야에서 요즘 뜨는 책 -->
+        <section id="section-recommend" class="recommend-section">
+          <h2 class="recommend-title">이 분야에서 요즘 뜨는 책</h2>
+          <div class="recommend-slider1">
+            <button class="slider-btn1 prev1">&lt;</button>
+            <div class="slider-viewport1">
+              <div class="slider-track1" id="sliderTrack1"></div>
+            </div>
+            <button class="slider-btn1 next1">&gt;</button>
+            <div class="slider-dots1">
+              <span class="dot1 active1"></span>
+              <span class="dot1"></span>
+            </div>
+          </div>
+        </section>
+</div>
+        <!-- 슬라이드2: 소설/에세이/시 분야 베스트 -->
+         <div class="product-main-wrap">
+        <section class="recommend-section2">
+          <h2 class="recommend-title2">소설/에세이/시 분야 베스트✨셀러</h2>
+          <div class="recommend-slider2">
+            <button class="slider-btn2 prev2">&lt;</button>
+            <div class="slider-viewport2">
+              <div class="slider-track2" id="sliderTrack2"></div>
+            </div>
+            <button class="slider-btn2 next2">&gt;</button>
+            <div class="slider-dots2">
+              <span class="dot2 active2"></span>
+              <span class="dot2"></span>
+            </div>
+          </div>
+        </section>
       </div>
+    
 
+    <!-- 교환/반품/환불 안내-->
+    <div class="product-main-wrap">
+      <section class="exchange-section" id="section-exchange">
+        <h2 class="exchange-title">교환/반품/환불</h2>
+        <table class="exchange-table">
+          <tbody>
+            <tr>
+              <th>반품/교환방법</th>
+              <td>
+                마이페이지 &gt; 주문관리 &gt; 주문/배송조회 &gt; 주문조회 후
+                <a href="#" class="exchange-link">[1:1상담신청]</a>
+                또는 고객센터 (1544-9020)<br>
+                ※ 오프라인, 해외배송 주문상품 문의 시 [1:1상담신청] 또는 고객센터 (1544-9020)
+              </td>
+            </tr>
+            <tr>
+              <th>반품/교환 가능기간</th>
+              <td>
+                · 반품/환불의 경우 수령 후 7일 이내<br>
+                · 상품의 결함 및 계약내용과 다를 경우 문제점 발견 및 30일 이내
+              </td>
+            </tr>
+            <tr>
+              <th>반품/교환 비용</th>
+              <td>
+                · 단순변심 혹은 구매착오로 인한 반품/교환은 반송료 고객 부담<br>
+                · 해외배송 도서 구매 후 단순변심에 의한 취소 및 반품 시 도서판매가의 20% 수수료 부과
+              </td>
+            </tr>
+            <tr>
+              <th>반품/교환 불가 사유</th>
+              <td>
+                · 소비자의 책임 있는 사유로 상품 등이 손실 또는 훼손된 경우<br>
+                · 소비자의 사용, 포장 개봉에 의해 상품 등의 가치가 현저히 감소한 경우<br>
+                예) 만화, 잡지, 수험서 및 문제집류<br>
+                · 복제가 가능한 상품 등의 포장을 훼손한 경우<br>
+                예) 음반/DVD/비디오, 소프트웨어, 만화책, 잡지, 영상 화보집<br>
+                · 소비자의 요청에 따라 개별적으로 주문 제작되는 상품의 경우<br>
+                · 디지털 컨텐츠인 eBook, 오디오북 등을 1회 이상 다운로드를 받았을 경우<br>
+                · 시간 경과에 의해 재판매가 곤란한 정도로 가치가 현저히 감소한 경우<br>
+                · 전자상거래 등에서의 소비자보호에 관한 법률이 정하는 소비자 청약철회 제한 내용에 해당되는 경우
+              </td>
+            </tr>
+            <tr>
+              <th>상품 품절</th>
+              <td>
+                공급사(출판사) 재고 사정에 의해 품절/지연될 수 있으며, 품절 시 관련 사항에 대해서는 이메일과 문자로 안내드리겠습니다.
+              </td>
+            </tr>
+            <tr>
+              <th>소비자 피해보상 환불지연에 따른 배상</th>
+              <td>
+                · 상품의 불량에 의한 교환, A/S, 환불, 품질보증 및 피해보상 등에 관한 사항은 소비자분쟁 해결 기준(공정거래위원회 고시)에 준하여 처리됨<br>
+                · 대금 환불 및 환불지연에 따른 배상금 지급 조건, 절차 등은 전자상거래 등에서의 소비자 보호에 관한 법률에 따라 처리함
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+    </div>
 
-
-
-      <aside class="product-purchase-side">
+    <aside class="product-purchase-side">
         <div class="purchase-sticky-box">
           <img id="bookImg" src="https://image.yes24.com/goods/131303097/XL" alt="책표지">
           <div class="book-info-wrap">
@@ -391,66 +543,16 @@
           </div>
         </div>
       </aside>
-    </div>
-
-
-    <div class="product-main-wrap">
-      <section id="section-review" class="review-section">
-        <div class="review-section-head">
-          <h2 class="review-title">도서리뷰 <span class="review-count">(0)</span></h2>
-          <button type="button" class="review-write-btn">리뷰쓰기</button>
-        </div>
-        <p class="review-section-desc">
-          이 책을 읽고 어떤 느낌을 받으셨나요? 리뷰를 남기고 다른 독자들과 함께 공유해보세요.
-        </p>
-        <div class="review-none-box">
-          <div class="review-none-text">등록된 리뷰가 없습니다</div>
-          <a href="#" class="review-none-link">첫번째 리뷰어가 되어주세요</a>
-        </div>
-      </section>
-    </div>
-
-     <div class="product-main-wrap">
-    <div class="recommend-section" id="recommendSection">
-  <h2 class="recommend-title">이 분야에서 요즘 뜨는 책</h2>
-  <div class="recommend-slider">
-    <button class="slider-btn prev">&lt;</button>
-    <div class="slider-track-wrap">
-      <div class="slider-viewport">
-      <div class="slider-track" id="sliderTrack">
       </div>
+
+
+    <!-- 공지사항 -->
+    <div class="notice_one_line_wrap">
+      <div class="notice_one_line">
+        <span class="notice_label">공지사항</span>
+        <span class="notice_text" id="noticeRolling">[공지] 개인정보 처리방침 개정 안내 (2024.06.01)</span>
       </div>
     </div>
-    <button class="slider-btn next">&gt;</button>
-    <div class="slider-dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-    </div>
-  </div>
-</div>
-    </div>
-
-    <div class="product-main-wrap">
-    <div class="recommend-section2" id="recommendSection2">
-  <h2 class="recommend-title2">소설/에세이/시 분야 베스트✨셀러</h2>
-  <div class="recommend-slider2">
-    <button class="slider-btn prev2">&lt;</button>
-    <div class="slider-track-wrap2">
-      <div class="slider-viewport2">
-      <div class="slider-track2" id="sliderTrack2">
-      </div>
-      </div>
-    </div>
-    <button class="slider-btn next2">&gt;</button>
-    <div class="slider-dots2">
-      <span class="dot active2"></span>
-      <span class="dot2"></span>
-    </div>
-  </div>
-</div>
-    </div>
-
-
 
 
 
@@ -542,8 +644,10 @@
       </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/sub.js"></script>
     <script src="./js/sub_api.js"></script>
+    <script src="./js/common.js"></script>
     <script src="./js/main.js"></script>
 </body>
 

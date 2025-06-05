@@ -1,3 +1,4 @@
+// 서브 메인 책
 const bookTitle = "우리의 낙원에서 만나자";
 
 async function fetchBookInfo(title) {
@@ -48,87 +49,123 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // 이분야 뜨는책
-
-const bookTitles = [
+// ==== 슬라이드1: 이 분야에서 요즘 뜨는 책 ====
+const bookTitles1 = [
   "치유의 빛", "고래눈이 내리다", "내게 남은 스물다섯 번의 계절", "나태주의 풀꽃 인생수업",
   "내 꿈에 가끔만 놀러와", "파과", "어른의 관계에는 마침표가 없다", "첫 여름 완주"
 ];
-const PAGE_SIZE = 4;
-let page = 0;
+const PAGE_SIZE1 = 4;
+let page1 = 0;
+const KAKAO_API_KEY = '7dc8a40298c87972a469f758f14bd142';
 
-const sliderTrack = document.getElementById('sliderTrack');
-const dots = document.querySelectorAll('.slider-dots .dot');
-const prevBtn = document.querySelector('.slider-btn.prev');
-const nextBtn = document.querySelector('.slider-btn.next');
-
-const KAKAO_API_KEY = '7dc8a40298c87972a469f758f14bd142'; // 본인 키로 바꿔!
-
-async function fetchBookInfo(title) {
-  const url = `https://dapi.kakao.com/v3/search/book?target=title&query=${encodeURIComponent(title)}&size=1`;
-  const res = await fetch(url, {
-    headers: { Authorization: `KakaoAK ${KAKAO_API_KEY}` }
+function fetchBooks1(cb) {
+  let books = [];
+  let done = 0;
+  bookTitles1.forEach((title, i) => {
+    fetch(`https://dapi.kakao.com/v3/search/book?target=title&size=1&query=${encodeURIComponent(title)}`, {
+      headers: { Authorization: `KakaoAK ${KAKAO_API_KEY}` }
+    }).then(r => r.json()).then(data => {
+      if (data.documents && data.documents.length > 0) {
+        books[i] = data.documents[0];
+      } else {
+        books[i] = null;
+      }
+      done++;
+      if (done === bookTitles1.length) cb(books.filter(b => b));
+    });
   });
-  const data = await res.json();
-  if (data.documents && data.documents.length) {
-    const book = data.documents[0];
-    return {
-      title: book.title,
-      thumbnail: book.thumbnail || 'https://via.placeholder.com/140x196?text=No+Image',
-      authors: book.authors.join(", "),
-      publisher: book.publisher
-    }
-  } else {
-    // fallback
-    return {
-      title, thumbnail: 'https://via.placeholder.com/140x196?text=No+Image', authors: '', publisher: ''
-    }
-  }
 }
 
-async function loadBooks() {
-  const books = [];
-  for (const title of bookTitles) {
-    books.push(await fetchBookInfo(title));
-  }
-  return books;
+function renderSlider1(books, page) {
+  const track = document.getElementById('sliderTrack1');
+  track.innerHTML = '';
+  books.forEach(book => {
+    track.innerHTML += `
+      <div class="related-book-card1">
+        <img src="${book.thumbnail || ''}" alt="">
+        <div class="related-book-title1">${book.title}</div>
+        <div class="related-book-meta1">${book.authors.join(', ')} | ${book.publisher}</div>
+      </div>
+    `;
+  });
+  // ★ 중요: 트랙 width 동적으로!
+  track.style.width = (156 * books.length + 18 * (books.length - 1)) + 'px';
+  track.style.transform = `translateX(-${page * 720}px)`;
+  document.querySelectorAll('.slider-dots1 .dot1').forEach((dot, i) => {
+    dot.classList.toggle('active1', i === page);
+  });
 }
 
-function renderSlider(books, page) {
-  sliderTrack.innerHTML = '';
-  for (let i = 0; i < PAGE_SIZE; i++) {
-    const idx = page * PAGE_SIZE + i;
-    if (books[idx]) {
-      sliderTrack.innerHTML += `
-        <div class="related-book-card">
-          <img src="${books[idx].thumbnail}" alt="${books[idx].title}">
-          <div class="related-book-title">${books[idx].title}</div>
-          <div class="related-book-meta">${books[idx].authors} | ${books[idx].publisher}</div>
-        </div>
-      `;
-    }
-  }
-  dots.forEach((dot, idx) => dot.classList.toggle('active', idx === page));
-}
+fetchBooks1(books => {
+  renderSlider1(books, page1);
 
-loadBooks().then(books => {
-  renderSlider(books, page);
-
-  prevBtn.onclick = () => {
-    if (page > 0) {
-      page--;
-      renderSlider(books, page);
-    }
+  document.querySelector('.slider-btn1.prev1').onclick = function() {
+    if (page1 > 0) { page1--; renderSlider1(books, page1); }
   };
-  nextBtn.onclick = () => {
-    if (page < Math.ceil(books.length / PAGE_SIZE) - 1) {
-      page++;
-      renderSlider(books, page);
-    }
+  document.querySelector('.slider-btn1.next1').onclick = function() {
+    if (page1 < Math.ceil(books.length / PAGE_SIZE1) - 1) { page1++; renderSlider1(books, page1); }
   };
-  dots.forEach((dot, idx) => {
-    dot.onclick = () => {
-      page = idx;
-      renderSlider(books, page);
-    }
+  document.querySelectorAll('.slider-dots1 .dot1').forEach((dot, idx) => {
+    dot.onclick = () => { page1 = idx; renderSlider1(books, page1); }
+  });
+});
+
+// ==== 슬라이드2: 소설/에세이/시 분야 베스트 ====
+const bookTitles2 = [
+  "모순", "급류", "소년이 온다", "단 한 번의 삶",
+  "홍학의 자리", "파과", "채식주의자", "어른의 행복은 조용하다"
+];
+const PAGE_SIZE2 = 4;
+let page2 = 0;
+
+function fetchBooks2(cb) {
+  let books = [];
+  let done = 0;
+  bookTitles2.forEach((title, i) => {
+    fetch(`https://dapi.kakao.com/v3/search/book?target=title&size=1&query=${encodeURIComponent(title)}`, {
+      headers: { Authorization: `KakaoAK ${KAKAO_API_KEY}` }
+    }).then(r => r.json()).then(data => {
+      if (data.documents && data.documents.length > 0) {
+        books[i] = data.documents[0];
+      } else {
+        books[i] = null;
+      }
+      done++;
+      if (done === bookTitles2.length) cb(books.filter(b => b));
+    });
+  });
+}
+
+function renderSlider2(books, page) {
+  const track = document.getElementById('sliderTrack2');
+  track.innerHTML = '';
+  books.forEach(book => {
+    track.innerHTML += `
+      <div class="related-book-card2">
+        <img src="${book.thumbnail || ''}" alt="">
+        <div class="related-book-title2">${book.title}</div>
+        <div class="related-book-meta2">${book.authors.join(', ')} | ${book.publisher}</div>
+      </div>
+    `;
+  });
+  // ★ 중요: 트랙 width 동적으로!
+  track.style.width = (156 * books.length + 18 * (books.length - 1)) + 'px';
+  track.style.transform = `translateX(-${page * 720}px)`;
+  document.querySelectorAll('.slider-dots2 .dot2').forEach((dot, i) => {
+    dot.classList.toggle('active2', i === page);
+  });
+}
+
+fetchBooks2(books => {
+  renderSlider2(books, page2);
+
+  document.querySelector('.slider-btn2.prev2').onclick = function() {
+    if (page2 > 0) { page2--; renderSlider2(books, page2); }
+  };
+  document.querySelector('.slider-btn2.next2').onclick = function() {
+    if (page2 < Math.ceil(books.length / PAGE_SIZE2) - 1) { page2++; renderSlider2(books, page2); }
+  };
+  document.querySelectorAll('.slider-dots2 .dot2').forEach((dot, idx) => {
+    dot.onclick = () => { page2 = idx; renderSlider2(books, page2); }
   });
 });

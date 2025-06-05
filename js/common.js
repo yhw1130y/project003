@@ -1,4 +1,5 @@
- document.addEventListener('DOMContentLoaded', () => {
+// 드롭다운 메뉴
+document.addEventListener('DOMContentLoaded', () => {
   const dropdownTrigger = document.querySelector('.has-dropdown');
   const dropdownMenu = document.querySelector('.gnb_dropdown');
 
@@ -29,38 +30,9 @@
 });
 
 
-// 슬라이드
-const swiperEl = document.querySelector('swiper-container');
-const swiper = swiperEl.swiper;
-const progressCircle = document.querySelector(".autoplay-progress svg");
-const progressContent = document.querySelector(".autoplay-progress span");
 
-swiperEl.addEventListener("autoplaytimeleft", (e) => {
-  const [swiper, time, progress] = e.detail;
-  progressCircle.style.setProperty("--progress", 1 - progress);
-  progressContent.textContent = `${Math.ceil(time / 1000)}s`;
 
-  Object.assign(swiperEl, {
-  navigation: {
-    nextEl: '.custom-button-next',
-    prevEl: '.custom-button-prev'
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    type: 'fraction'
-  },
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false
-  },
-  loop: true
-});
-
-swiperEl.initialize();
-
-});
-
-// 공지사항
+//공지사항
 const notices = [
   '[공지] 개인정보 처리방침 개정 안내 (2024.06.01)',
   '[이벤트] 2024 상반기 사은품 지급 기준 변경',
